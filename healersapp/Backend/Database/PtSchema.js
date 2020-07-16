@@ -37,7 +37,7 @@ phoneNumber:
 password : 
 {
     type: 
-    String,
+    String,         
     required: true,
 },
 food:[foodSchema],

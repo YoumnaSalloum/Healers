@@ -45,3 +45,34 @@ users.post('/signUp', (req, res) => {
     // }
     // else{console.log("error")}
 })
+users.post('/login', (req, res) => {
+  
+    User.findOne({
+        email: req.body.email
+    })
+    .then(user => {
+        if(user) {
+            if(bcrypt.compareSync(req.body.password, user.password)) {
+                const payload = {
+                    _id: user._id,
+                    password: user.password,
+                    email: user.email
+                }
+                let token = jwt.sign(payload, process.env.JWT_KEY+"", {
+                    expiresIn: 1440
+                })
+                
+                res.send(token)
+            } else {
+                res.json({error: "User dose not exist"})
+            }
+        } else {
+            res.json({error: "User dose not exist"})
+        }
+        // console.log(process.env.JWT_KEY)
+    })
+    .catch(err => {
+        res.send('error: ' + err)
+    })
+})
+module.exports=users

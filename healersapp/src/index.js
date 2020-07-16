@@ -2,11 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import IntersetForm from './components/intresetform'
+import BillForm from './components/hosform'
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BillForm />
   </React.StrictMode>,
   document.getElementById('root')
 );

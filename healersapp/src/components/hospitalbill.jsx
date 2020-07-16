@@ -43,7 +43,7 @@ backgroundColor: red[500],
 }));
 
 export default function HospitalBill(props) {
-  const { clases } = props;
+const { clases } = props;
 const classes = useStyles();
 const [expanded, setExpanded] = React.useState(false);
 
@@ -52,19 +52,18 @@ setExpanded(!expanded);
 };
 
 return (
-  
 <Grid
-  container
-  spacing={5}
-  direction="column"
-  alignItems="center"
-  justify="center"
-  style={{ minHeight: '100vh' }}
- >
+container
+spacing={5}
+direction="column"
+alignItems="center"
+justify="center"
+style={{ minHeight: '100vh' }}
+>
 
-  <Grid item xs={3}>
-    <Card>
-    <Card className={classes.root} >
+<Grid item xs={3}>
+<Card>
+<Card className={classes.root} >
 <CardHeader
 avatar={
 <Avatar aria-label="recipe" className={classes.avatar}>
@@ -114,7 +113,7 @@ aria-label="show more"
 <Typography paragraph>
 </Typography>
 <Typography paragraph>
-The description of patient health situation  
+The description of patient health situation 
 </Typography>
 <Typography paragraph>
 Hospital Name 
@@ -128,14 +127,12 @@ Hospital phone number
 </CardContent>
 </Collapse>
 </Card>
-    </Card>
+</Card>
 
-    
-  </Grid> 
-  
-       
- </Grid>
+</Grid> 
+</Grid>
 );
 }
 
 //hospitalbill
+

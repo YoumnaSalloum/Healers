@@ -1,0 +1,120 @@
+[{
+	"category": "signup",
+	"username" : "Hanan",
+	"email" : "Hananmajali@gmail.com",
+	"password" : "mkrn5462em",
+	"phone number" : 0795442976
+},
+{
+	"category": "signup",
+	"username" : "Azuz",
+	"email" : "Azuz@gmail.com",
+	"password" : "djf1dfsd",
+	"phone number" : 0797244505
+},
+{
+	"category": "signup",
+	"username" : "mohamad",
+	"email" : "mo@gmail.come",
+	"password" : "jfd5gmm",
+	"phone number" : 
+},
+{
+	"category": "signup",
+	"username" : "Mayis",
+	"email" : "mayis.mazin@gmail.com",
+	"password" : "msdpv1dk",
+	"phone number" : 0795674047
+},
+{
+	"category": "signup",
+	"username" : "Amneh",
+	"email" : "amneh@gmail.com",
+	"password" : "fdgdke1ed",
+	"phone number" :0796669709 
+},
+{
+	"category": "login",
+	"username" : "Hanan",
+	"password" : "mkrn5462em"
+},
+{
+	"category": "login",
+	"username" : "Mayis",
+	"password" : "msdpv1dk"
+},
+{
+	"category": "login",
+	"username" : "Amneh",
+	"password" : "fdgdke1ed"
+},
+{
+	"category": "login",
+	"username" : "mohamad",
+	"password" : "jfd5gmm"
+},
+{
+	"category": "login",
+	"username" : "Azuz",
+	"password" : "djf1dfsd"
+},
+{
+	"category": "hospital bill",
+	"Amount" : 10000,
+    "name of hospital": " AlHaramain Hospital ",
+    "address of hospital": "Mother of the northern sumac",
+    "phone number of hospital" :065500002,
+    "description about patient health situation" : "A 50-year-old man who needs a heart transplant with high blood pressure and authersclerosis needs an open frying operation",
+    "img":"hos1.jpg",
+    "video": "https://www.youtube.com/watch?v=yJhcityaoEY"
+},
+{
+	"category": "hospital bill",
+	"Amount" : 4350,
+    "name of hospital": "The Specialty Hospital ",
+    "address of hospital": "Shmeisani Area",
+    "phone number of hospital" :065001111,
+    "description about patient health situation" : "A 38-year-old women needs breast removal after being diagnosed with malignant breast cancer",
+    "img":"",
+    "video": "youtube.com/watch?v=ULPtujqmiA8"
+},
+{
+	"category": "hospital bill",
+	"Amount" : 3500,
+    "name of hospital": " Islamic Hospital",
+    "address of hospital": "Abdali Street",
+    "phone number of hospital" :065101010,
+    "description about patient health situation" : "A 11-year-old child suffering from acute inflammation in his hand causd by cutting it during the war and not being treated properly and that properly reqires a full arm amputation with psychological treatment",
+    "img":"",
+    "video": "https://www.youtube.com/watch?v=AUGgFocBn_w"
+},
+{
+	"category": "hospital bill",
+	"Amount" : 2223,
+    "name of hospital": "The Specialty Hospital  ",
+    "address of hospital": "Shmeisani Area",
+    "phone number of hospital" :065001111,
+    "description about patient health situation" : "I suffer from sever stomach pain and doctors decided to perform a gallbladder operation for me",
+    "img":"hos4.jpg",
+    "video": ""
+},
+{
+	"category": "hospital bill",
+	"Amount" : 450,
+    "name of hospital": "Dar AL-Salam Hospital ",
+    "address of hospital": "Issa Al-Naouri Street",
+    "phone number of hospital" :065850008,
+    "description about patient health situation" : "Removal of thyroid gland,which causeshigh hormones and severe inflammation with high blood sugar and confusion of hormones in a diabetes patient",
+    "img":"hos5.jpg",
+    "video": ""
+},
+{
+	"category": "hospital bill",
+	"Amount" : 2050,
+    "name of hospital": "Farah Hospital ",
+    "address of hospital": "Mai Ziyadeh Street",
+    "phone number of hospital" :064603555,
+    "description about patient health situation" : "A 10-year-old couple who had no children had a transplant and succeeded and the woman needed a cesarean ",
+    "img":"hos3.jpg",
+    "video": ""
+}]

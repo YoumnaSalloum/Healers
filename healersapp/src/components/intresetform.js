@@ -8,22 +8,18 @@ import FormControl from '@material-ui/core/FormControl';
 import Grid from '@material-ui/core/Grid';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Button from '@material-ui/core/Button';
-import $ from 'jquery'
-console.log($)
- // const useStyles = makeStyles((theme) => ({
-//     margin: {
-//       margin: theme.spacing(1),
-//     },
-//   }));
+// import $ from 'jquery'
+// console.log($)
+ 
   class IntersetForm extends Component {
-    handle(event){
-     console.log(event.target.value)
-     if(event.target.value==='others'){
-      $('#others').attr("hidden", false)
-     }else if(event.target.value!=='others'){
-        $('#others').attr("hidden", true)
-     }
-    }
+    // handle(event){
+    //  console.log(event.target.value)
+    //  if(event.target.value==='others'){
+    //   $('#others').attr("hidden", false)
+    //  }else if(event.target.value!=='others'){
+    //     $('#others').attr("hidden", true)
+    //  }
+    // }
     render(){
     return (
         <div>
@@ -45,7 +41,7 @@ console.log($)
      <br />
      <br />
      <div >
-     <p>please contact the patient with this phone number:- 0796776458</p>
+     <p>please contact the patient with this phone number:- "0796776458"</p>
     please give us feedback 
      <input />
      </div>

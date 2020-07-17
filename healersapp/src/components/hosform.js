@@ -8,12 +8,9 @@ import FormControl from '@material-ui/core/FormControl';
 import Grid from '@material-ui/core/Grid';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Button from '@material-ui/core/Button';
-import $ from 'jquery'
+
 
 class BillForm extends Component {
-
-
-
     render(){
         return(
             <div >

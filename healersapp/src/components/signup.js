@@ -12,8 +12,6 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-//sign up page
- 
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -35,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function signup() {
+export default function Signup() {
   const classes = useStyles();
 
   return (
@@ -99,6 +97,7 @@ export default function signup() {
             
           </Grid>
           <Button
+            to='/login'
             type="submit"
             fullWidth
             variant="contained"
@@ -116,7 +115,6 @@ export default function signup() {
           </Grid>
         </form>
       </div>
-      
     </Container>
   );
 }

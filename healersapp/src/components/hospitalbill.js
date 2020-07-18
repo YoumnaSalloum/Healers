@@ -16,7 +16,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-
+import Button from '@material-ui/core/Button'
 const useStyles = makeStyles((theme) => ({
 root: {
 alignText: "center",
@@ -41,16 +41,13 @@ avatar: {
 backgroundColor: red[500],
 },
 }));
-
 export default function HospitalBill(props) {
 const { clases } = props;
 const classes = useStyles();
 const [expanded, setExpanded] = React.useState(false);
-
 const handleExpandClick = () => {
 setExpanded(!expanded);
 };
-
 return (
 <Grid
 container
@@ -60,7 +57,6 @@ alignItems="center"
 justify="center"
 style={{ minHeight: '100vh' }}
 >
-
 <Grid item xs={3}>
 <Card>
 <Card className={classes.root} >
@@ -87,7 +83,6 @@ title="Paella dish"
 <Typography variant="body2" color="textSecondary" component="p">
 Bill amount:
 </Typography>
-
 </CardContent>
 <CardActions disableSpacing>
 {/* <IconButton aria-label="add to favorites">
@@ -123,6 +118,9 @@ Hospital Address
 </Typography>
 <Typography>
 Hospital phone number
+</Typography>
+<Typography>
+<Button color="secondary">INTEREST</Button>
 </Typography>
 </CardContent>
 </Collapse>
@@ -153,7 +151,6 @@ title="Paella dish"
 <Typography variant="body2" color="textSecondary" component="p">
 Bill amount:
 </Typography>
-
 </CardContent>
 <CardActions disableSpacing>
 {/* <IconButton aria-label="add to favorites">
@@ -189,6 +186,9 @@ Hospital Address
 </Typography>
 <Typography>
 Hospital phone number
+</Typography>
+<Typography>
+<Button color="secondary">INTEREST</Button>
 </Typography>
 </CardContent>
 </Collapse>
@@ -219,7 +219,6 @@ title="Paella dish"
 <Typography variant="body2" color="textSecondary" component="p">
 Bill amount:
 </Typography>
-
 </CardContent>
 <CardActions disableSpacing>
 {/* <IconButton aria-label="add to favorites">
@@ -255,6 +254,9 @@ Hospital Address
 </Typography>
 <Typography>
 Hospital phone number
+</Typography>
+<Typography>
+<Button color="secondary">INTEREST</Button>
 </Typography>
 </CardContent>
 </Collapse>
@@ -285,7 +287,6 @@ title="Paella dish"
 <Typography variant="body2" color="textSecondary" component="p">
 Bill amount:
 </Typography>
-
 </CardContent>
 <CardActions disableSpacing>
 {/* <IconButton aria-label="add to favorites">
@@ -321,6 +322,9 @@ Hospital Address
 </Typography>
 <Typography>
 Hospital phone number
+</Typography>
+<Typography>
+<Button color="secondary">INTEREST</Button>
 </Typography>
 </CardContent>
 </Collapse>
@@ -351,7 +355,6 @@ title="Paella dish"
 <Typography variant="body2" color="textSecondary" component="p">
 Bill amount:
 </Typography>
-
 </CardContent>
 <CardActions disableSpacing>
 {/* <IconButton aria-label="add to favorites">
@@ -388,14 +391,15 @@ Hospital Address
 <Typography>
 Hospital phone number
 </Typography>
+<Typography>
+<Button color="secondary">INTEREST</Button>
+</Typography>
 </CardContent>
 </Collapse>
 </Card>
 </Card>
-
 </Grid> 
 </Grid>
 );
 }
-
 //hospitalbill

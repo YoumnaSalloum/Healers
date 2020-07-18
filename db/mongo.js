@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-mongoose.connect("mongodb://localhost/collection");
+mongoose.connect("mongodb://localhost/collection",{ useUnifiedTopology: true });
 
 const db = mongoose.connection;
 

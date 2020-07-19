@@ -1,6 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
 //
+var session = require('express-session');
 var bodyParser = require('body-parser');
 // //for testing
 // app.get('/',function(req,res){
@@ -58,6 +59,8 @@ users.post('/login', (req, res) => {
     .then(user => {
         if(user) {
             if(bcrypt.compareSync(req.body.myData.password, user.password)) {
+                req.session.loggedin = true;
+                    //  req.session.name = results[0].name;
                 const payload = {
                     _id: user._id,
                     password: user.password,
@@ -80,4 +83,9 @@ users.post('/login', (req, res) => {
         res.send('error: ' + err)
     })
 })
+users.get('/logout', (request, response) => {
+    console.log('Destroying session');
+    request.session.destroy();
+    response.send({ result: 'OK', message: 'Session destroyed' });
+});
 module.exports=users

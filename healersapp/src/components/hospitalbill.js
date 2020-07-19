@@ -11,6 +11,8 @@ import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
+import {Link} from 'react-router-dom'
+import IntersetForm from './intresetform'
 import { red } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
@@ -120,7 +122,7 @@ Hospital Address
 Hospital phone number
 </Typography>
 <Typography>
-<Button color="secondary">INTEREST</Button>
+<Button color="secondary">    <Link to="/IntersetForm">INTEREST</Link></Button>
 </Typography>
 </CardContent>
 </Collapse>
@@ -188,7 +190,7 @@ Hospital Address
 Hospital phone number
 </Typography>
 <Typography>
-<Button color="secondary">INTEREST</Button>
+<Button color="secondary">    <Link to="/IntersetForm">INTEREST</Link></Button>
 </Typography>
 </CardContent>
 </Collapse>
@@ -256,7 +258,7 @@ Hospital Address
 Hospital phone number
 </Typography>
 <Typography>
-<Button color="secondary">INTEREST</Button>
+<Button color="secondary">    <Link to="/IntersetForm">INTEREST</Link></Button>
 </Typography>
 </CardContent>
 </Collapse>
@@ -324,7 +326,7 @@ Hospital Address
 Hospital phone number
 </Typography>
 <Typography>
-<Button color="secondary">INTEREST</Button>
+<Button color="secondary">    <Link to="/IntersetForm">INTEREST</Link></Button>
 </Typography>
 </CardContent>
 </Collapse>
@@ -392,7 +394,7 @@ Hospital Address
 Hospital phone number
 </Typography>
 <Typography>
-<Button color="secondary">INTEREST</Button>
+<Button color="secondary">    <Link to="/IntersetForm">INTEREST</Link></Button>
 </Typography>
 </CardContent>
 </Collapse>

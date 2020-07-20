@@ -7,7 +7,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 // import Link from '@material-ui/core/Link';
 import {Link} from 'react-router-dom'
-
+import BillForm from './hosform'
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
@@ -96,7 +96,7 @@ $.post('http://localhost:8000/login',{myData: user })
           className={this.classes.submit}
           onClick={this.handelLogin}
         >
-          <Link style={{color:'white'}} to="/hospitalbill" >Sign in</Link>   
+          <Link style={{color:'white'}} to="/hosform" >Sign in</Link>   
         </Button>
         <Grid container>
           <Grid item xs>

@@ -22,6 +22,11 @@ const images = [
     url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTRv7A2fktdfMsAvmbxqSKTgvrdGxfgKJxSpw&usqp=CAU',
     title: 'Hospital Bill Posts',
     width: '40%',
+  },
+  {
+    url: 'https://www.pancan.org/wp-content/uploads/2018/04/vegetables-cutting-board-733x450.jpg',
+    title: 'Food prescriptions  Posts',
+    width: '40%',
   }
   ]
 

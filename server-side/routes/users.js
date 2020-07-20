@@ -17,6 +17,8 @@ const User = require('../../db/mongo');
 users.use(cors());
 users.post('/signUp', (req, res) => {
 
+
+    
     const userData = {
         userName : req.body.myData.userName,
         phoneNumber: req.body.myData.phoneNumber,

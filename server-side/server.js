@@ -37,12 +37,6 @@ app.get('/select',function(req,res){
         console.log(result)
       res.send(result[0].hospitalBill)
 
-
-
-      
-
-
-
 })
 
     })

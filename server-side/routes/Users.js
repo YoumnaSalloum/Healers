@@ -1,13 +1,24 @@
 const mongoose = require('mongoose')
 const express =require ('express')
 //
+var nodemailer = require('nodemailer');
 var session = require('express-session');
 var bodyParser = require('body-parser');
 // //for testing
 // app.get('/',function(req,res){
 //     res.send("youmna")
 // })
-const express = require('express')
+
+
+var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'youmna61998@gmail.com',
+      pass: 'youmna1998'
+    }
+  });
+
+
 
 const users = express.Router();
 const cors = require('cors');
@@ -90,4 +101,24 @@ users.get('/logout', (request, response) => {
     request.session.destroy();
     response.send({ result: 'OK', message: 'Session destroyed' });
 });
+
+users.post('/send',(req,res)=>{
+
+    var mailOptions = {
+        from: 'youmna61998@gmail.com',
+        to: req.body.email,
+        subject: 'Sending Email using Node.js',
+        text: 'That was easy!'
+      };
+      
+      transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+      });
+res.send("hey")
+
+})
 module.exports=users

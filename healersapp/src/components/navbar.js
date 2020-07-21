@@ -1,5 +1,7 @@
 //main page 
 import React from 'react';
+import Grid from '@material-ui/core/Grid';
+
 //import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import HospitalBill from "./hospitalbill.js";
@@ -7,6 +9,7 @@ import BillForm from "./hosform.js";
 import IntersetForm from "./intresetform.js";
 import LogIn from "./login.js";
 import SignUp from "./signup.js";
+import SimpleTabs from "./foodCategories/tabs.js";
 import {Link} from 'react-router-dom'
 //navbar from material-ui
 import { makeStyles } from '@material-ui/core/styles';
@@ -19,16 +22,21 @@ import ButtonBase from '@material-ui/core/ButtonBase';
 
 const images = [
   {
+    
     url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTRv7A2fktdfMsAvmbxqSKTgvrdGxfgKJxSpw&usqp=CAU',
     title: 'Hospital Bill Posts',
     width: '40%',
-  },
-  {
-    url: 'https://www.pancan.org/wp-content/uploads/2018/04/vegetables-cutting-board-733x450.jpg',
-    title: 'Food prescriptions  Posts',
-    width: '40%',
   }
   ]
+
+  const images2 = [
+   
+    {
+      url: 'https://www.pancan.org/wp-content/uploads/2018/04/vegetables-cutting-board-733x450.jpg',
+      title: 'Food prescriptions  Posts',
+      width: '40%',
+    }
+    ]
 
 
 
@@ -36,10 +44,18 @@ const useStyles = makeStyles((theme) => ({
   rot: {
    display: 'flex',
     flexWrap: 'wrap',
-    minWidth: 300,
+    minWidth: 200,
     width: '100%',
     justifyContent: 'center',
+    
   },
+  rot2: {
+    display: 'flex',
+     flexWrap: 'wrap',
+     minWidth: 200,
+     width: '100%',
+     justifyContent: 'center ',
+   },
   root: {
     flexGrow: 1,
   },
@@ -52,7 +68,7 @@ const useStyles = makeStyles((theme) => ({
     image: {
 
     position: 'relative',
-    height: 500,
+    height: 250,
     [theme.breakpoints.down('xs')]: {
       width: '100% !important', // Overrides inline-style
       height: 100,
@@ -70,6 +86,7 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
+  
   focusVisible: {},
   imageButton: {
     position: 'absolute',
@@ -165,6 +182,41 @@ function NavBar() {
           </span>
         </Link>
       ))}
+      </div>
+      <div className={classes.rot2} >
+      {images2.map((image) => (
+        <Link
+        to="/foodCategories"
+          focusRipple
+          key={image.title}
+          className={classes.image}
+          focusVisibleClassName={classes.focusVisible}
+          style={{
+            width: image.width,
+          }}
+        >
+          <span
+            className={classes.imageSrc}
+            style={{
+              backgroundImage: `url(${image.url})`,
+            }}
+          />
+          <span className={classes.imageBackdrop} />
+          <span className={classes.imageButton}>
+            <Typography
+              component="span"
+              variant="subtitle1"
+              color="inherit"
+              className={classes.imageTitle}
+            >
+            
+                 {image.title}
+              <span className={classes.imageMarked} />
+            </Typography>
+          </span>
+        </Link>
+      ))}
+      
       </div>
     </div>
   );

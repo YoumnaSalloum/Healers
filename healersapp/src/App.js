@@ -9,6 +9,8 @@ import BillForm from "./components/hosform.js";
 import IntersetForm from "./components/intresetform.js";
 import Login from "./components/login.js";
 import Signup from "./components/signup.js";
+ import SimpleTabs from "./components/foodCategories/tabs.js";
+
 
 
 function App(){
@@ -18,7 +20,7 @@ function App(){
      <br/> 
      <div>
      
-     
+     <Route path="/foodCategories" exact component= {SimpleTabs} />
      <Route path="/hospitalbill" exact component= {HospitalBill} />
      <Route path="/hosform" exact component= {BillForm} />
      <Route path="/IntersetForm" exact component= {IntersetForm} />

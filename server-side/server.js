@@ -29,6 +29,8 @@ const users = require ('./routes/Users.js')
 app.use(users)
 app.get('/select',function(req,res){
     var bill2 = {amount:900,hospitalName:'lol0'}
+    var bill = {amount:0,hospitalName:'youmna'}
+
     User.find({}).then(function(result){
         
         // console.log(result[0].hospitalBill.push(bill))

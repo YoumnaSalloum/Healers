@@ -163,7 +163,7 @@ users.post('/send',(req,res)=>{
                     subject: 'Sending Email using Node.js',
                     text:'someone pay for you '+payment+' $'+' and the way of payment is '+selected+' and the feedback is : '+feed
                   };
-                  
+                  //
                   transporter.sendMail(mailOptions, function(error, info){
                     if (error) {
                       console.log(error);

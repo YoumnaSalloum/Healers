@@ -32,20 +32,7 @@ console.log($)
 
 
     handle(event){
-    //  console.log(event.target.value)
-    //  if(event.target.value==='others'){
-    //   $('#others').attr("hidden", false)
-    //  }else if(event.target.value!=='others'){
-    //     $('#others').attr("hidden", true)
-    //  }
-    // }
-    // onSubmit(e) {
-    //   e.preventDefault()
-
-    //   const user = {
-    //       text: this.state.text,
-    //       date: this.state.date
-    //   };
+    
   var user = {payment:$('#pay').val(),selected:$('#select').val(),feed:$('#feedback').val()}
   console.log($('#feedback').val())
       axios.post('http://localhost:8000/send', user)
@@ -56,7 +43,7 @@ console.log($)
               console.log(error)
           });
 
-      // this.setState({ text: '', date: '' })
+ 
 
     
   }

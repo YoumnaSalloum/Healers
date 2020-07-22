@@ -114,6 +114,10 @@ users.post('/send',(req,res)=>{
     var bill = {amount:900,hospitalName:'lol0'}
     var bill2 = {amount:0,hospitalName:'youmna'}
 
+   var payment=req.body.payment
+   var selected=req.body.selected
+   var feed=req.body.feed
+
     // User.findByIdAndUpdate({id:"5f15c9d9e4a194183f0ac89a"}).then(function(result){
         // console.log(result)
         // result[0].hospitalBill.push(bill)
@@ -160,9 +164,9 @@ users.post('/send',(req,res)=>{
                     from: 'youmna61998@gmail.com',
                     to:obj2.email,
                     subject: 'Sending Email using Node.js',
-                    text: 'that was easy!!'
+                    text:'someone pay for you '+payment+' $'+' and the way of payment is '+selected+' and the feedback is : '+feed
                   };
-                  
+                  //
                   transporter.sendMail(mailOptions, function(error, info){
                     if (error) {
                       console.log(error);

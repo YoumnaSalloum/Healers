@@ -9,6 +9,7 @@ import BillForm from "./hosform.js";
 import IntersetForm from "./intresetform.js";
 import LogIn from "./login.js";
 import SignUp from "./signup.js";
+import Profile from "./profile.js"
 import SimpleTabs from "./foodCategories/tabs.js";
 import {Link} from 'react-router-dom'
 //navbar from material-ui
@@ -19,6 +20,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 //complex buttons material ui 
 import ButtonBase from '@material-ui/core/ButtonBase';
+
 
 const images = [
   {
@@ -145,6 +147,8 @@ function NavBar() {
           </Typography>
           <Link to="/Signup" variant="body2"> SignUp </Link>
           <Link to="/Login" >Login</Link>
+          <Link to="/profile" >Profile</Link>
+          <Link to="/createpost">create hospital bill Post</Link>
           <Button color="inherit">Logout</Button>
         </Toolbar>
       </AppBar>

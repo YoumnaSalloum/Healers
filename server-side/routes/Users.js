@@ -1,20 +1,26 @@
 const mongoose = require('mongoose')
 const express =require ('express')
-//
+const requireLogin = require('../middleware/requireLogin')
+
 var session = require('express-session');
 var bodyParser = require('body-parser');
+
 // //for testing
 // app.get('/',function(req,res){
 //     res.send("youmna")
 // })
-const express = require('express')
+ 
 
+
+//connect the route with User.js schema 
+const User = mongoose.model('User')
 const users = express.Router();
 const cors = require('cors');
 require('dotenv').config(); // to read .env file
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const User = require('../../db/mongo');
+const router = require('./hospost');
+// const User = require('../../db/mongo');
 
 users.use(cors());
 users.post('/signUp', (req, res) => {

@@ -15,12 +15,6 @@ db.on("error", (error) => {
     console.log("Connection error:", error);
   });
 
-<<<<<<< HEAD
-
-const hospitalBillSchema=new Schema({amount:Number,hospitalNumber:Number,
-    hospitalName:String,hospitalAddress:String,descAboutHealthPatient:String,image:String})
-
-=======
 //youmna
 //const foodSchema=new Schema({typeOfDisease:String,descreptionOfPrescription:String,phoneNumber:Number,img:String,video:String})
 const hospitalBillSchema=new Schema({
@@ -57,7 +51,6 @@ const hospitalBillSchema=new Schema({
         ref:"users"
     }
  })
->>>>>>> 85af6ef1a545d27006160e91bb9711ce8ab7f89c
 const User=new Schema({
     userName :{
         type: String,

@@ -11,7 +11,8 @@ import Login from "./components/login.js";
 import Signup from "./components/signup.js";
  import SimpleTabs from "./components/foodCategories/tabs.js";
 import Profile from "./components/profile.js"
-
+//test
+import HospitalBill from './components/billFontEnd.js'
 
 function App(){
   return (

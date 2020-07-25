@@ -58,7 +58,29 @@ const hospitalBillSchema=new Schema({
     }
  })
 
-
+//food category schema 
+const FoodCategoriesSchema = new Schema({
+    descriptionOfPrescription:{
+        type:String,
+        required:true
+    },
+    Category:{
+        type:String,
+        required:true
+    },
+     UserPhoneNumber:{
+        type:Number,
+        required:true
+    },
+    photo:{
+        type:String,
+        default:"no photo"
+    },
+    postedBy:{
+        type:ObjectId,
+        ref:"users"
+    }
+ })
 
 
  //user schema 
@@ -83,38 +105,13 @@ const User=new Schema({
     required: true,
     },
 
-     hospitalBill:[hospitalBillSchema]
-    //  FoodCategories:[FoodCategoriesSchema]
-
      hospitalBill:[hospitalBillSchema],
      FoodCategories:[FoodCategoriesSchema]
 
 })
 
 
-//food category schema 
-const FoodCategoriesSchema = new Schema({
-    descriptionOfPrescription:{
-        type:String,
-        required:true
-    },
-    Category:{
-        type:String,
-        required:true
-    },
-     UserPhoneNumber:{
-        type:Number,
-        required:true
-    },
-    photo:{
-        type:String,
-        default:"no photo"
-    },
-    postedBy:{
-        type:ObjectId,
-        ref:"users"
-    }
- })
+
 
  const userModel=mongoose.model('user',User)
 

@@ -85,6 +85,7 @@ class Signup extends Component {
           </Grid>
           <Grid item xs={12}>
             <TextField
+             type="email"
               variant="outlined"
               required
               fullWidth
@@ -92,7 +93,17 @@ class Signup extends Component {
               label="Email Address"
               name="email"
               autoComplete="email"
+              validators={['required', 'isEmail']}
+              errorMessages={['this field is required', 'email is not valid']}
             />
+               {/* <TextValidator
+                    label="Email"
+  
+                    name="email"
+                    
+                    validators={['required', 'isEmail']}
+                    errorMessages={['this field is required', 'email is not valid']}
+                /> */}
           </Grid>
           <Grid item xs={12}>
             <TextField

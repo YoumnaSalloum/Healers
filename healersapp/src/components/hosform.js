@@ -45,6 +45,7 @@ class BillForm extends React.Component {
       hospitalName: $("#hosName").val(),
       hospitalAddress: $("#hosAdress").val(),
       descAboutHealthPatient: $("#healthDes").val(),
+      patientNumber:$('#patNum').val(),
       feedBack: $("#feed").val(),
     };
     console.log(bill);
@@ -103,7 +104,6 @@ class BillForm extends React.Component {
         <br />
         <br />
         <input type="file" name="myImage" onChange={this.onChange} />
-
         <button   variant="contained"
           color="primary"
           type="submit" 

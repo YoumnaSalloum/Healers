@@ -37,6 +37,7 @@ class BillForm extends React.Component {
     //     alert("failed, " + ex);
     //   });
   }
+  //lubna
   onFormSubmit(e) {
     var bill = {
       amount: $("#amount").val(),

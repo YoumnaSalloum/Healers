@@ -1,3 +1,4 @@
+
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const {ObjectId} = mongoose.Schema.Types
@@ -14,11 +15,7 @@ db.on("error", (error) => {
   });
 
 
-//Hospital bill schema 
 
-
-const hospitalBillSchema=new Schema({amount:Number,hospitalNumber:Number,
-    hospitalName:String,hospitalAddress:String,descAboutHealthPatient:String,image:String})
 
 
 //youmna
@@ -111,6 +108,7 @@ const FoodCategoriesSchema = new Schema({
  })
 
  const userModel=mongoose.model('user',User)
+
 
 
 module.exports = userModel

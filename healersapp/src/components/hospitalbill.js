@@ -53,6 +53,8 @@ const [expanded, setExpanded] = React.useState(false);
 const handleExpandClick = () => {
 setExpanded(!expanded);
 };
+
+
 return (
 <Grid
 container
@@ -82,12 +84,14 @@ action={
 title="Hospital Bill"
 subheader=""
 />
+<img src="https://miro.medium.com/max/3200/1*MpSlUJoxPjb9jk6PG525vA.jpeg"/>
 <CardMedia
 className={classes.media}
 // img or video:
 image="/static/images/cards/paella.jpg"
 title="Paella dish"
 />
+
 <CardContent>
 <Typography variant="body2" color="textSecondary" component="p">
 Bill amount:

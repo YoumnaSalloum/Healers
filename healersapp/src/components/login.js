@@ -96,7 +96,7 @@ $.post('http://localhost:8000/login',{myData: user })
           className={this.classes.submit}
           onClick={this.handelLogin}
         >
-          <Link style={{color:'white'}} to="/hosform" >Sign in</Link>   
+          <Link style={{color:'white'}} to="/" >Sign in</Link>   
         </Button>
         <Grid container>
           <Grid item xs>

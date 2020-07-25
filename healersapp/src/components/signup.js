@@ -16,8 +16,6 @@ import Container from '@material-ui/core/Container';
 import $ from 'jquery'
 //sign up page
  import Login from './login.js'
- import { TextValidator } from 'react-material-ui-form-validator';
-
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -37,7 +35,6 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
 }));
-
 class Signup extends Component {
   constructor(props){
     super(props)
@@ -45,17 +42,13 @@ class Signup extends Component {
     this.handleSignUp = this.handleSignUp.bind(this)
   }
   handleSignUp(event){
- 
      var user = {userName:$('#firstName').val(),phoneNumber:$('#phoneNumber').val(),email:$('#email').val(),password:$('#password').val()}
      $.post('http://localhost:8000/signUp',
      { myData: user })
      .done(function () { alert(user.userName); })
      .fail(function (jqxhr, settings, ex) { alert('failed, ' + ex); });
-     
      }
-  
-  render() { 
-  
+  render() {
     return ( <Container component="main" maxWidth="xs">
     <CssBaseline />
     <div className={this.classes.paper}>
@@ -124,7 +117,6 @@ class Signup extends Component {
               autoComplete="current-password"
             />
           </Grid>
-          
         </Grid>
         <Button
           type="submit"
@@ -139,15 +131,12 @@ class Signup extends Component {
         </Button>
         <Grid container justify="flex-end">
           <Grid item>
-          <Link to="/Login" >Already have an account? Sign in</Link>           
+          <Link to="/Login" >Already have an account? Sign in</Link>
           </Grid>
         </Grid>
       </form>
     </div>
-    
   </Container> );
   }
 }
- 
 export default Signup;
-

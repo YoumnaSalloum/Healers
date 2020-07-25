@@ -12,6 +12,7 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import {Link} from 'react-router-dom'
+//
 import IntersetForm from './intresetform'
 import { red } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
@@ -52,6 +53,8 @@ const [expanded, setExpanded] = React.useState(false);
 const handleExpandClick = () => {
 setExpanded(!expanded);
 };
+
+
 return (
 <Grid
 container
@@ -81,12 +84,14 @@ action={
 title="Hospital Bill"
 subheader=""
 />
+<img src="https://miro.medium.com/max/3200/1*MpSlUJoxPjb9jk6PG525vA.jpeg"/>
 <CardMedia
 className={classes.media}
 // img or video:
 image="/static/images/cards/paella.jpg"
 title="Paella dish"
 />
+
 <CardContent>
 <Typography variant="body2" color="textSecondary" component="p">
 Bill amount:

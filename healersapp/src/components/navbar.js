@@ -24,11 +24,11 @@ import ButtonBase from '@material-ui/core/ButtonBase';
 
 const images = [
   {
-    
     url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTRv7A2fktdfMsAvmbxqSKTgvrdGxfgKJxSpw&usqp=CAU',
     title: 'Hospital Bill Posts',
-    width: '40%',
+    width: '100%',
   }
+ 
   ]
 
   const images2 = [
@@ -36,7 +36,7 @@ const images = [
     {
       url: 'https://www.pancan.org/wp-content/uploads/2018/04/vegetables-cutting-board-733x450.jpg',
       title: 'Food prescriptions  Posts',
-      width: '40%',
+      width: '100%',
     }
     ]
 
@@ -70,7 +70,7 @@ const useStyles = makeStyles((theme) => ({
     image: {
 
     position: 'relative',
-    height: 250,
+    height: 300,
     [theme.breakpoints.down('xs')]: {
       width: '100% !important', // Overrides inline-style
       height: 100,
@@ -145,18 +145,21 @@ function NavBar() {
           <Typography variant="h6" className={classes.title}>
             About Us
           </Typography>
-          <Link to="/Signup" variant="body2"> SignUp </Link>
-          <Link to="/Login" >Login</Link>
-          <Link to="/profile" >Profile</Link>
-          <Link to="/createpost">create hospital bill Post</Link>
-          <Button color="inherit">Logout</Button>
+          
+          <Button color="inherit" to="/profile" component={Link} >Profile</Button>
+          <Button  color="inherit" to="/foodform" component={Link}>create Food Post</Button>
+          <Button color="inherit" to="/createpost" component={Link}>create hospital bill Post</Button>
+          <Button  to="/Signup" component={Link}> SignUp </Button>
+          <Button  to="/Login" component={Link} >Login</Button>
+          <Button >Logout</Button>
         </Toolbar>
       </AppBar>
 
     <div className={classes.rot}>
       {images.map((image) => (
-        <Link
+        <Button
         to="/hospitalbill"
+        component={Link}
           focusRipple
           key={image.title}
           className={classes.image}
@@ -184,13 +187,14 @@ function NavBar() {
               <span className={classes.imageMarked} />
             </Typography>
           </span>
-        </Link>
+        </Button>
       ))}
       </div>
       <div className={classes.rot2} >
       {images2.map((image) => (
-        <Link
+        <Button
         to="/foodCategories"
+        component={Link}
           focusRipple
           key={image.title}
           className={classes.image}
@@ -218,7 +222,7 @@ function NavBar() {
               <span className={classes.imageMarked} />
             </Typography>
           </span>
-        </Link>
+        </Button>
       ))}
       
       </div>

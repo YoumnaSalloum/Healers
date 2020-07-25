@@ -18,8 +18,10 @@ db.on("error", (error) => {
 
 
 
+
 //youmna
 //const foodSchema=new Schema({typeOfDisease:String,descreptionOfPrescription:String,phoneNumber:Number,img:String,video:String})
+
 
 const hospitalBillSchema=new Schema({
     amount:{
@@ -58,7 +60,9 @@ const hospitalBillSchema=new Schema({
 
 
 
+
  //user schema 
+
 
 const User=new Schema({
     userName :{
@@ -78,8 +82,13 @@ const User=new Schema({
     type:String,
     required: true,
     },
+
+     hospitalBill:[hospitalBillSchema]
+    //  FoodCategories:[FoodCategoriesSchema]
+
      hospitalBill:[hospitalBillSchema],
      FoodCategories:[FoodCategoriesSchema]
+
 })
 
 

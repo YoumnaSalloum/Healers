@@ -9,8 +9,9 @@ import BillForm from "./components/hosform.js";
 import IntersetForm from "./components/intresetform.js";
 import Login from "./components/login.js";
 import Signup from "./components/signup.js";
- import SimpleTabs from "./components/foodCategories/tabs.js";
-import Profile from "./components/profile.js"
+import SimpleTabs from "./components/foodCategories/tabs.js";
+import Profile from "./components/profile.js";
+import FoodForm from "./components/foodForm";
 
 
 function App(){
@@ -28,7 +29,8 @@ function App(){
      <Route path="/Login"  component= {Login} />
      <Route path="/Signup" component= {Signup} />
      <Route path="/profile" component={Profile} />
-    
+     <Route path="/foodForm" component={FoodForm} />
+
      </div>
      </Router>
      

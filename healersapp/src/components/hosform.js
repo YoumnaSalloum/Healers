@@ -29,13 +29,13 @@ class BillForm extends React.Component {
       descAboutHealthPatient: $("#healthDes").val(),
       feedBack: $("#feed").val(),
     };
-    $.post("http://localhost:8000/uploa", { myData: bill })
-      .done(function () {
-        alert("Request done!");
-      })
-      .fail(function (jqxhr, settings, ex) {
-        alert("failed, " + ex);
-      });
+    // $.post("http://localhost:8000/uploa", { myData: bill })
+    //   .done(function () {
+    //     alert("Request done!");
+    //   })
+    //   .fail(function (jqxhr, settings, ex) {
+    //     alert("failed, " + ex);
+    //   });
   }
   onFormSubmit(e) {
     var bill = {

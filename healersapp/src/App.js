@@ -10,7 +10,7 @@ import IntersetForm from "./components/intresetform.js";
 import Login from "./components/login.js";
 import Signup from "./components/signup.js";
  import SimpleTabs from "./components/foodCategories/tabs.js";
-
+import Profile from "./components/profile.js"
 
 
 function App(){
@@ -20,13 +20,14 @@ function App(){
      <br/> 
      <div>
      
-     <Route path="/foodCategories" exact component= {SimpleTabs} />
-     <Route path="/hospitalbill" exact component= {HospitalBill} />
-     <Route path="/hosform" exact component= {BillForm} />
-     <Route path="/IntersetForm" exact component= {IntersetForm} />
-     <Route path="/Login" exact component= {Login} />
      <Route path="/" exact component= {NavBar} />
-     <Route path="/Signup" exact component= {Signup} />
+     <Route path="/foodCategories" component= {SimpleTabs} />
+     <Route path="/hospitalbill" component= {HospitalBill} />
+     <Route path="/createpost"  component= {BillForm} />
+     <Route path="/IntersetForm"  component= {IntersetForm} />
+     <Route path="/Login"  component= {Login} />
+     <Route path="/Signup" component= {Signup} />
+     <Route path="/profile" component={Profile} />
     
      </div>
      </Router>

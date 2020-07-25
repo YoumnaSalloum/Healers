@@ -1,3 +1,4 @@
+
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const {ObjectId} = mongoose.Schema.Types
@@ -13,7 +14,13 @@ db.on("error", (error) => {
     console.log("Connection error:", error);
   });
 
-//Hospital bill schema 
+
+
+
+
+//youmna
+//const foodSchema=new Schema({typeOfDisease:String,descreptionOfPrescription:String,phoneNumber:Number,img:String,video:String})
+
 const hospitalBillSchema=new Schema({
     amount:{
         type:Number,
@@ -50,7 +57,9 @@ const hospitalBillSchema=new Schema({
  })
 
 
+
  //user schema 
+
 const User=new Schema({
     userName :{
         type: String,
@@ -69,8 +78,8 @@ const User=new Schema({
     type:String,
     required: true,
     },
-     hospitalBill:[hospitalBillSchema]
-    //  FoodCategories:[FoodCategoriesSchema]
+     hospitalBill:[hospitalBillSchema],
+     FoodCategories:[FoodCategoriesSchema]
 })
 
 
@@ -99,6 +108,7 @@ const FoodCategoriesSchema = new Schema({
  })
 
  const userModel=mongoose.model('user',User)
+
 
 
 module.exports = userModel

@@ -3,8 +3,6 @@ const Schema = mongoose.Schema
 const {ObjectId} = mongoose.Schema.Types
 mongoose.connect("mongodb://localhost/collection");
 
-
-
 const db = mongoose.connection;
 
 db.once("open", () => {
@@ -15,14 +13,17 @@ db.on("error", (error) => {
     console.log("Connection error:", error);
   });
 
-<<<<<<< HEAD
+
+//Hospital bill schema 
+
 
 const hospitalBillSchema=new Schema({amount:Number,hospitalNumber:Number,
     hospitalName:String,hospitalAddress:String,descAboutHealthPatient:String,image:String})
 
-=======
+
 //youmna
 //const foodSchema=new Schema({typeOfDisease:String,descreptionOfPrescription:String,phoneNumber:Number,img:String,video:String})
+
 const hospitalBillSchema=new Schema({
     amount:{
         type:Number,
@@ -57,7 +58,11 @@ const hospitalBillSchema=new Schema({
         ref:"users"
     }
  })
->>>>>>> 85af6ef1a545d27006160e91bb9711ce8ab7f89c
+
+
+
+ //user schema 
+
 const User=new Schema({
     userName :{
         type: String,
@@ -76,13 +81,36 @@ const User=new Schema({
     type:String,
     required: true,
     },
-     hospitalBill:[hospitalBillSchema]
+     hospitalBill:[hospitalBillSchema],
+     FoodCategories:[FoodCategoriesSchema]
 })
+
+
+//food category schema 
+const FoodCategoriesSchema = new Schema({
+    descriptionOfPrescription:{
+        type:String,
+        required:true
+    },
+    Category:{
+        type:String,
+        required:true
+    },
+     UserPhoneNumber:{
+        type:Number,
+        required:true
+    },
+    photo:{
+        type:String,
+        default:"no photo"
+    },
+    postedBy:{
+        type:ObjectId,
+        ref:"users"
+    }
+ })
+
  const userModel=mongoose.model('user',User)
 
-// const userSignUp = new Schema({
-//     userName:String,phoneNumber:Number,email:String,password:String
-// }
-// )
-// const user = mongoose.model('user',userSignUp)
+
 module.exports = userModel

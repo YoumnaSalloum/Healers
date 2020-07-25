@@ -12,9 +12,8 @@ app.use(session({
     saveUninitialized: true
     // id: 
 }));
+
 const User = require('../db/mongo');
-
-
 
 let port = 8000
 
@@ -27,6 +26,7 @@ app.use (
 require('dotenv').config(); // to read .env file
 
 // const users = require ('./routes/Users.js')
+
 // app.use(users)
 app.get('/select',function(req,res){
     var bill2 = {amount:900,hospitalName:'lol0'}
@@ -41,9 +41,10 @@ app.get('/select',function(req,res){
       res.send(result[0].hospitalBill)
 
 })
-
     })
-
+    //use routers 
+    // app.use('/foodCategories',FoodPostRouter)
+    // app.use('/HospitalPost', HospitalPostRouter)
 
 app.listen(port,()=>{
     console.log('listening to port 8000')

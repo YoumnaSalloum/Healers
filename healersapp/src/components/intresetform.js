@@ -52,6 +52,15 @@ console.log($)
 }
     render(){
     return (
+      <Grid
+      container
+      spacing={5}
+      direction="column"
+      alignItems="center"
+      justify="center"
+      style={{ minHeight: '100vh' }}
+      >
+      <Grid item xs={3}>
         <div>
       <div >
         <FormControl >
@@ -82,6 +91,8 @@ console.log($)
     </Button>
       </div>
       </div>
+      </Grid> 
+        </Grid>
     );
     }
   }

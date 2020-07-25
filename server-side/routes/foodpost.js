@@ -1,10 +1,10 @@
 const express = require('express')
 const router = express.Router()
 const mongoose = require('mongoose')
-const HospitalPost = require('../../db/mongo');
+const FoodPost = require('../../db/mongo');
 
 router.get('/allpost',(req,res)=>{
-    HospitalPost.find()
+    FoodPost.find()
     .populate('postedBy',"_id userName")
     .then(posts=>{
         res.json({posts})
@@ -15,19 +15,16 @@ router.get('/allpost',(req,res)=>{
     })
 })
 
-router.post('/createHospitalPost',(req,res) =>{
-    const {amount,hospitalName,hospitalPhoneNumber, hospitalAddress,descAboutHealthPatient,patientPhoneNumber} = req.body
-    if(!amount || !hospitalName || !hospitalPhoneNumber || !hospitalAddress || !descAboutHealthPatient || !patientPhoneNumber){
+router.post('/createFoodPost',(req,res) =>{
+    const {descriptionOfPrescription,Category,UserPhoneNumber} = req.body
+    if(!descriptionOfPrescription || !Category || !UserPhoneNumber){
         return res.status(422).json({error:"Please add all the fields"})
     }
 
     const post = new Post({
-        amount,
-        hospitalName,
-        hospitalPhoneNumber,
-        hospitalAddress,
-        descAboutHealthPatient,
-        patientPhoneNumber,
+        descriptionOfPrescription,
+        Category,
+        UserPhoneNumber,
         postedBy:req.user   //=> to know who put this post 
     })
     post.save().then(result =>{
@@ -40,7 +37,7 @@ router.post('/createHospitalPost',(req,res) =>{
 
 // the user can see all his posts
 router.get('/mypost',(req,res)=>{
-    HospitalPost.find({postedBy:req.user._id})
+    FoodPost.find({postedBy:req.user._id})
     .populate('postedBy',"_id userName")
     .then(mypost=>{
         res.json({mypost})
@@ -49,6 +46,5 @@ router.get('/mypost',(req,res)=>{
         console.log(err)
     })
 })
-
 
 module.exports = router

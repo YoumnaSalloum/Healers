@@ -69,8 +69,8 @@ const User=new Schema({
     type:String,
     required: true,
     },
-     hospitalBill:[hospitalBillSchema],
-     FoodCategories:[FoodCategoriesSchema]
+     hospitalBill:[hospitalBillSchema]
+    //  FoodCategories:[FoodCategoriesSchema]
 })
 
 

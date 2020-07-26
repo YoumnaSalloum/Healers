@@ -254,6 +254,7 @@ users.post('/signUp', (req, res) => {
     // }
     // else{console.log("error")}
 })
+var store;
 var obj={}
 var obj2={email:''}
 users.post('/login', (req, res) => {
@@ -272,6 +273,7 @@ users.post('/login', (req, res) => {
                 }
                 obj.id = user._id
                 obj2.email=user.email
+                store=req.body.myData.id
                 // console.log( obj.id  )
                 let token = jwt.sign(payload, process.env.JWT_KEY+"", {
                     expiresIn: 1440
@@ -386,6 +388,7 @@ const storage = multer.diskStorage({
        imgurl+=req.file.path
        console.log(imgurl)
       console.log("Request file ---", req.file.path); //Here you get file.
+      console.log(hosBill.id)
     //push bill for hospitalbill array
     // amount:{ hospitalName:{ hospitalPhoneNumber:{ hospitalAddress:{ descAboutHealthPatient: patientPhoneNumber:{
       // photo

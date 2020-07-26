@@ -87,6 +87,7 @@ const FoodCategoriesSchema = new Schema({
 
 
 const User=new Schema({
+    userId:{type:String,  unique: true},
     userName :{
         type: String,
         required: true,

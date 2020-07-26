@@ -1,8 +1,41 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
 // import './App.css';
 
+const useStyles = makeStyles((theme) => ({
+    root: {
+      flexGrow: 1,
+    },
+    menuButton: {
+      marginRight: theme.spacing(2),
+    },
+    title: {
+      flexGrow: 1,
+    },
+  }));
+
 const Profile = () =>{
+    const classes = useStyles();
     return(
+        <div>
+        <div className={classes.root}>
+        <AppBar position="static">
+          <Toolbar>
+            <Typography variant="h6" className={classes.title}>
+              About Us
+            </Typography>
+            <Button  color="inherit" to="/foodform" component={Link}>create Food Post</Button>
+            <Button color="inherit" to="/createpost" component={Link}>create hospital bill Post</Button>
+            <Button color="inherit" to="/" component={Link} >HomePage</Button>
+            <Button >Logout</Button>
+          </Toolbar>
+        </AppBar>
+        </div>
         <div style={{maxWidth:"550px", margin:"0px auto"}}>
             <div style={{
                 display:"flex",
@@ -37,6 +70,7 @@ const Profile = () =>{
            <img className="item" src="https://lh3.googleusercontent.com/proxy/lerz6YHZ5j9e6kjQ41Wktz9qHC77Yu0lFWJGkvwJB6aCDU5IZb4Rs8eKwryQTLYr7_0FcRMjithLHNG7EKtOEknXByX_MlAcqIRysCGbeMsjLGeAMKs "/>
            <img className="item" src="https://lh3.googleusercontent.com/proxy/lerz6YHZ5j9e6kjQ41Wktz9qHC77Yu0lFWJGkvwJB6aCDU5IZb4Rs8eKwryQTLYr7_0FcRMjithLHNG7EKtOEknXByX_MlAcqIRysCGbeMsjLGeAMKs "/>
           </div>
+        </div>
         </div>
     )
 }

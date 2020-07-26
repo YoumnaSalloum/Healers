@@ -1,14 +1,27 @@
-import React, { Component } from "react";
+import React from "react";
 import TextField from "@material-ui/core/TextField";
-import { makeStyles } from "@material-ui/core/styles";
-import Input from "@material-ui/core/Input";
-import InputLabel from "@material-ui/core/InputLabel";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import FormControl from "@material-ui/core/FormControl";
 import Grid from "@material-ui/core/Grid";
-import Button from "@material-ui/core/Button";
+import Button from '@material-ui/core/Button';
+import {Link} from 'react-router-dom'
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
 import $ from "jquery";
 var axios = require("axios");
+
+// const useStyles = makeStyles((theme) => ({
+//   root: {
+//     flexGrow: 1,
+//   },
+//   menuButton: {
+//     marginRight: theme.spacing(2),
+//   },
+//   title: {
+//     flexGrow: 1,
+//   },
+// }));
+
 class BillForm extends React.Component {
   constructor(props) {
     super(props);
@@ -45,6 +58,7 @@ class BillForm extends React.Component {
       hospitalName: $("#hosName").val(),
       hospitalAddress: $("#hosAdress").val(),
       descAboutHealthPatient: $("#healthDes").val(),
+      patientNumber:$('#patNum').val(),
       feedBack: $("#feed").val(),
     };
     console.log(bill);
@@ -70,8 +84,24 @@ class BillForm extends React.Component {
   onChange(e) {
     this.setState({ file: e.target.files[0] });
   }
+  
   render() {
+    // const classes = useStyles();
     return (
+      <div>
+      <div >
+      <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h6" >
+            About Us
+          </Typography>
+          <Button  color="inherit" to="/foodform" component={Link}>create Food Post</Button>
+          <Button color="inherit" to="/profile" component={Link} >Profile</Button>
+          <Button color="inherit" to="/" component={Link} >HomePage</Button>
+          <Button >Logout</Button>
+        </Toolbar>
+      </AppBar>
+      </div>
       <Grid
       container
       spacing={5}
@@ -82,9 +112,13 @@ class BillForm extends React.Component {
       >
       <Grid item xs={3}>
       <form onSubmit={this.onFormSubmit}>
+      
         <h1>Hospital Bill Form </h1>
+
+        <div>
         Amount <input type="number" id="amount" />
-        <br />
+        </div>
+        
         Phone number of the hospital
         <TextField id="hosNum" />
         <br />
@@ -103,14 +137,29 @@ class BillForm extends React.Component {
         <br />
         <br />
         <input type="file" name="myImage" onChange={this.onChange} />
-
-        <button   variant="contained"
-          color="primary"
-          type="submit" 
+       
+        <div>
+        <h4>please send us feed back about your Finance assistant
+      and tell us if you got your help
+       on this email "youmna61998@gmailcom"</h4>
+        <Grid
+      container
+      spacing={5}
+      direction="column"
+      alignItems="center"
+      justify="center"
+      style={{ minHeight: '20vh' }}
+      >
+      <Grid item xs={3}>
+        <Button   variant="contained"
+        color="primary"
           onClick={this.onFormSubmit}
           >
          Submit
-        </button>
+        </Button>
+        </Grid> 
+        </Grid>
+        </div>
         
        
         
@@ -124,6 +173,7 @@ class BillForm extends React.Component {
       </form>
       </Grid> 
         </Grid>
+        </div>
     );
   }
 }

@@ -1,3 +1,4 @@
+
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const {ObjectId} = mongoose.Schema.Types
@@ -13,7 +14,15 @@ db.on("error", (error) => {
     console.log("Connection error:", error);
   });
 
-//Hospital bill schema 
+
+
+
+
+
+//youmna
+//const foodSchema=new Schema({typeOfDisease:String,descreptionOfPrescription:String,phoneNumber:Number,img:String,video:String})
+
+
 const hospitalBillSchema=new Schema({
     amount:{
         type:Number,
@@ -41,38 +50,13 @@ const hospitalBillSchema=new Schema({
     },
     photo:{
         type:String,
-        default:"no photo"
+        required:true
     },
     postedBy:{
         type:ObjectId,
         ref:"users"
     }
  })
-
-
- //user schema 
-const User=new Schema({
-    userName :{
-        type: String,
-        required: true,
-    },
-    phoneNumber:{ 
-      type: Number,
-    required: true
-    },
-    email :{
-    type:String,
-    required: true,
-    unique: true
-    },
-    password :{
-    type:String,
-    required: true,
-    },
-     hospitalBill:[hospitalBillSchema]
-    //  FoodCategories:[FoodCategoriesSchema]
-})
-
 
 //food category schema 
 const FoodCategoriesSchema = new Schema({
@@ -98,7 +82,39 @@ const FoodCategoriesSchema = new Schema({
     }
  })
 
+
+ //user schema 
+
+
+const User=new Schema({
+    userName :{
+        type: String,
+        required: true,
+    },
+    phoneNumber:{ 
+      type: Number,
+    required: true
+    },
+    email :{
+    type:String,
+    required: true,
+    unique: true
+    },
+    password :{
+    type:String,
+    required: true,
+    },
+
+     hospitalBill:[hospitalBillSchema],
+     FoodCategories:[FoodCategoriesSchema]
+
+})
+
+
+
+
  const userModel=mongoose.model('user',User)
+
 
 
 module.exports = userModel

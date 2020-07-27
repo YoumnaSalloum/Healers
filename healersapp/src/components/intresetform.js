@@ -33,7 +33,7 @@ console.log($)
 
     handle(event){
     
-  var user = {payment:$('#pay').val(),selected:$('#select').val(),feed:$('#feedback').val()}
+  var user = {id:localStorage.getItem('id'),payment:$('#pay').val(),selected:$('#select').val(),feed:$('#feedback').val()}
   console.log($('#feedback').val())
       axios.post('http://localhost:8000/send', user)
           .then((res) => {
@@ -52,6 +52,15 @@ console.log($)
 }
     render(){
     return (
+      <Grid
+      container
+      spacing={5}
+      direction="column"
+      alignItems="center"
+      justify="center"
+      style={{ minHeight: '100vh' }}
+      >
+      <Grid item xs={3}>
         <div>
       <div >
         <FormControl >
@@ -82,6 +91,8 @@ console.log($)
     </Button>
       </div>
       </div>
+      </Grid> 
+        </Grid>
     );
     }
   }

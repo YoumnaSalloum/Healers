@@ -3,8 +3,8 @@ import React from 'react';
 //import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import NavBar from './components/navbar.js';
-
-import HospitalBill from "./components/hospitalbill.js";
+import FoodForm from './components/foodForm.js'
+//import HospitalBill from "./components/hospitalbill.js";
 import BillForm from "./components/hosform.js";
 import IntersetForm from "./components/intresetform.js";
 import Login from "./components/login.js";

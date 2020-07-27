@@ -21,6 +21,8 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Button from '@material-ui/core/Button'
 import $ from 'jquery'
 
+//test 
+//import Pic from '../../../server-side/public/uploads/IMAGE-1595262248867.jpg'
 //testing 
 const useStyles = makeStyles((theme) => ({
 root: {
@@ -53,6 +55,8 @@ backgroundColor: red[500],
 // userName: "lubna"
 function MakePost(props){
     const { clases } = props;
+    console.log(props.userData.hospitalBill[0].photo)
+    const plzWork = '../../../server-side'
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
     const handleExpandClick = () => {
@@ -86,12 +90,14 @@ function MakePost(props){
         <CardMedia
         className={classes.media}
         // img or video:
-        image="/static/images/cards/paella.jpg"
+    image={'../../../server-side/'+ 'public/uploads/IMAGE-1595849935567.jfif'}
         title="Paella dish"
-        />
+    />
+       {/* <img src={Pic}/>*/}
+      {/* <img src={require('./../../../server-side/public/uploads/IMAGE-1595262248867.jpg')}/> */}
         <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-        Bill amount:
+        Bill amount:{props.userData.hospitalBill[0].amount}
         </Typography>
         </CardContent>
         <CardActions disableSpacing>
@@ -115,16 +121,16 @@ function MakePost(props){
         <Typography paragraph>
         </Typography>
         <Typography paragraph>
-        The description of patient health situation 
+        The description of patient health situation:{props.userData.hospitalBill[0].descAboutHealthPatient}
         </Typography>
         <Typography paragraph>
-        Hospital Name 
+        Hospital Name :{props.userData.hospitalBill[0].hospitalName}
         </Typography>
         <Typography>
-        Hospital Address 
+        Hospital Address :{props.userData.hospitalBill[0].hospitalAddress}
         </Typography>
         <Typography>
-        Hospital phone number
+        Hospital phone number :{props.userData.hospitalBill[0].hospitalPhoneNumber}
         </Typography>
         <Typography>
         <Button color="secondary">    <Link to="/IntersetForm">INTEREST</Link></Button>
@@ -164,7 +170,7 @@ await $.get('http://localhost:8000/mayis')
      console.log(bill)
 return(
     <div>
-    {bill.map((user,index)=>(<MakePost key={index}  userDAta={user} />))}
+    {bill.map((user,index)=>(<MakePost key={index}  userData={user} />))}
     </div>
 )
     }}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
@@ -12,7 +12,6 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import {Link} from 'react-router-dom'
-//
 import IntersetForm from './intresetform'
 import { red } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
@@ -21,7 +20,8 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Button from '@material-ui/core/Button'
 import axios from 'axios';
-
+import ShareButton from './shareButton';
+import { Fab } from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
 root: {
 alignText: "center",
@@ -53,7 +53,6 @@ const [expanded, setExpanded] = React.useState(false);
 const handleExpandClick = () => {
 setExpanded(!expanded);
 };
-
 
 return (
 <Grid
@@ -101,9 +100,6 @@ Bill amount:
 {/* <IconButton aria-label="add to favorites">
 <FavoriteIcon />
 </IconButton> */}
-<IconButton aria-label="share">
-<ShareIcon />
-</IconButton>
 <IconButton
 className={clsx(classes.expand, {
 [classes.expandOpen]: expanded,
@@ -135,7 +131,9 @@ Hospital phone number
 <Typography>
 <Button color="secondary">    <Link to="/IntersetForm">INTEREST</Link></Button>
 </Typography>
+<ShareButton/>
 </CardContent>
+
 </Collapse>
 </Card>
 </Card>

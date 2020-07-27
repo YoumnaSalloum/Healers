@@ -1,7 +1,9 @@
 const mongoose = require('mongoose')
 const express =require ('express')
 //
+var path = require('path')
 const User = require('../../db/mongo');
+var multer = require('multer')
 
 var nodemailer = require('nodemailer');
 var session = require('express-session');
@@ -190,6 +192,78 @@ users.post('/send',(req,res)=>{
    })
 
 // res.send("hey")
-
+const storage = multer.diskStorage({
+    destination: "./public/uploads/",
+    filename: function (req, file, cb) {
+      cb(null, "IMAGE-" + Date.now() + path.extname(file.originalname));
+    },
+  });
+  const upload = multer({
+    storage: storage,
+    limits: { fileSize: 11000000 },
+  }).single("myImage");
+  //const router = express.Router();
+  
+  users.post("/upload", function (req, res) {
+  var imgurl="";
+    console.log(req.body);
+  
+    upload(req, res, function (err) {
+      var hosBill = JSON.parse(req.body.Billdata);
+      console.log(hosBill.amount)
+      // console.log("Request ---",  req.body);
+      console.log(obj.id)
+       imgurl+=req.file.path
+       console.log(imgurl)
+      console.log("Request file ---", req.file.path); //Here you get file.
+    //push bill for hospitalbill array
+    // amount:{ hospitalName:{ hospitalPhoneNumber:{ hospitalAddress:{ descAboutHealthPatient: patientPhoneNumber:{
+      // photo
+    //   var bill = {
+    //     amount: $("#amount").val(),
+    //     hospitalNumber: $("#hosNum").val(),
+    //     hospitalName: $("#hosName").val(),
+    //     hospitalAddress: $("#hosAdress").val(),
+    //     descAboutHealthPatient: $("#healthDes").val(),
+    //     patientNumber
+    //     feedBack: $("#feed").val(),
+    //   };
+      // postedBy:{
+          User.findOneAndUpdate(
+             {_id:obj.id}, 
+             { $push: { hospitalBill:{amount:hosBill.amount,hospitalName:hosBill.hospitalName,
+                hospitalPhoneNumber:hosBill.hospitalNumber,hospitalAddress:hosBill.hospitalAddress,
+                descAboutHealthPatient:hosBill.descAboutHealthPatient,patientPhoneNumber:hosBill.patientNumber,photo:imgurl
+            } } },
+            function (error, success) {
+                  if (error) {
+                      console.log(error);
+                  } else {
+                      console.log(success);
+                  }
+              });
+  
+      /*Now do where ever you want to do*/
+      if (!err) {
+        return res.send(200).end();
+      }
+    });
+  // //push bill for hospitalbill array
+          // User.findOneAndUpdate(
+          //    {_id:obj.id}, 
+          //    { $push: { hospitalBill: hospitalBill  } },
+          //   function (error, success) {
+          //         if (error) {
+          //             console.log(error);
+          //         } else {
+          //             console.log(success);
+          //         }
+          //     });
+  
+  
+  
+    //res.end('hi')
+  });
 
 module.exports=users
+

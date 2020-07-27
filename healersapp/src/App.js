@@ -4,7 +4,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import NavBar from './components/navbar.js';
 
-//import HospitalBill from "./components/hospitalbill.js";
+import HospitalBill from "./components/hospitalbill.js";
 import BillForm from "./components/hosform.js";
 import IntersetForm from "./components/intresetform.js";
 import Login from "./components/login.js";
@@ -29,7 +29,8 @@ function App(){
      <Route path="/Login"  component= {Login} />
      <Route path="/Signup" component= {Signup} />
      <Route path="/profile" component={Profile} />
-    
+     <Route path="/foodForm" component={FoodForm} />
+
      </div>
      </Router>
      

@@ -1,11 +1,10 @@
 const express = require('express')
 const router = express.Router()
 const mongoose = require('mongoose')
-const requireLogin = require('../middleware/requireLogin')
-const HosPost = mongoose.model('HosPost')
+const HospitalPost = require('../../db/mongo');
 
 router.get('/allpost',(req,res)=>{
-    HosPost.find()
+    HospitalPost.find()
     .populate('postedBy',"_id userName")
     .then(posts=>{
         res.json({posts})
@@ -16,9 +15,9 @@ router.get('/allpost',(req,res)=>{
     })
 })
 
-router.post('/createpost',requireLogin,(req,res) =>{
-    const {amount,hospitalName,hospitalPhoneNumber, hospitalAddress,descAboutHealthPatient,patientPhoneNumber,pic} = req.body
-    if(!amount || !hospitalName || !hospitalPhoneNumber || !hospitalAddress || !descAboutHealthPatient || !patientPhoneNumber || !pic){
+router.post('/createHospitalPost',(req,res) =>{
+    const {amount,hospitalName,hospitalPhoneNumber, hospitalAddress,descAboutHealthPatient,patientPhoneNumber} = req.body
+    if(!amount || !hospitalName || !hospitalPhoneNumber || !hospitalAddress || !descAboutHealthPatient || !patientPhoneNumber){
         return res.status(422).json({error:"Please add all the fields"})
     }
 
@@ -29,7 +28,6 @@ router.post('/createpost',requireLogin,(req,res) =>{
         hospitalAddress,
         descAboutHealthPatient,
         patientPhoneNumber,
-        pic,
         postedBy:req.user   //=> to know who put this post 
     })
     post.save().then(result =>{
@@ -42,7 +40,7 @@ router.post('/createpost',requireLogin,(req,res) =>{
 
 // the user can see all his posts
 router.get('/mypost',(req,res)=>{
-    HosPost.find({postedBy:req.user._id})
+    HospitalPost.find({postedBy:req.user._id})
     .populate('postedBy',"_id userName")
     .then(mypost=>{
         res.json({mypost})

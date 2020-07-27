@@ -22,6 +22,7 @@ class BillForm extends React.Component {
     this.handleHospitalBillSchema = this.handleHospitalBillSchema.bind(this);
   }
   handleHospitalBillSchema() {
+
     var bill = {
       amount: $("#amount").val(),
       hospitalNumber: $("#hosNum").val(),
@@ -46,7 +47,9 @@ class BillForm extends React.Component {
       hospitalName: $("#hosName").val(),
       hospitalAddress: $("#hosAdress").val(),
       descAboutHealthPatient: $("#healthDes").val(),
+      patientNumber:$('#patNum').val(),
       feedBack: $("#feed").val(),
+      id:localStorage.getItem('id')
     };
     console.log(bill);
     e.preventDefault();
@@ -104,7 +107,6 @@ class BillForm extends React.Component {
         <br />
         <br />
         <input type="file" name="myImage" onChange={this.onChange} />
-
         <button   variant="contained"
           color="primary"
           type="submit" 

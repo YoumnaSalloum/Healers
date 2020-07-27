@@ -87,7 +87,6 @@ const FoodCategoriesSchema = new Schema({
 
 
 const User=new Schema({
-    userId:{type:String,  unique: true},
     userName :{
         type: String,
         required: true,
@@ -105,7 +104,13 @@ const User=new Schema({
     type:String,
     required: true,
     },
-
+    id:{
+        type:String,
+        required: true,
+        unique: true
+        
+    }
+,
      hospitalBill:[hospitalBillSchema],
      FoodCategories:[FoodCategoriesSchema]
 

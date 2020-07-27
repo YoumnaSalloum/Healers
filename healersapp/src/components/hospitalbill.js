@@ -84,6 +84,8 @@ title="Hospital Bill"
 subheader=""
 />
 <img src="https://miro.medium.com/max/3200/1*MpSlUJoxPjb9jk6PG525vA.jpeg"/>
+<ShareButton/>
+
 <CardMedia
 className={classes.media}
 // img or video:
@@ -110,6 +112,8 @@ aria-label="show more"
 >
 <ExpandMoreIcon />
 </IconButton>
+
+
 </CardActions>
 <Collapse in={expanded} timeout="auto" unmountOnExit>
 <CardContent>
@@ -131,7 +135,8 @@ Hospital phone number
 <Typography>
 <Button color="secondary">    <Link to="/IntersetForm">INTEREST</Link></Button>
 </Typography>
-<ShareButton/>
+   <IconButton aria-label="share">
+        </IconButton>
 </CardContent>
 
 </Collapse>

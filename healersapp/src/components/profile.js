@@ -1,32 +1,50 @@
-import React from 'react'
+import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
-// import './App.css';
+import axios from "axios";
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-      flexGrow: 1,
-    },
-    menuButton: {
-      marginRight: theme.spacing(2),
-    },
-    title: {
-      flexGrow: 1,
-    },
-  }));
+// const useStyles = makeStyles((theme) => ({
+//     root: {
+//       flexGrow: 1,
+//     },
+//     menuButton: {
+//       marginRight: theme.spacing(2),
+//     },
+//     title: {
+//       flexGrow: 1,
+//     },
+//   }));
+   
+  
 
-const Profile = () =>{
-    const classes = useStyles();
+  export default class Profile extends Component {
+  // constructor(props) {
+  //   super(props);
+  //   this.onChangeemail = this.onChangeemail.bind(this);
+  //   this.onChangefirstName = this.onChangefirstName.bind(this);
+  //   this.onChangelastName = this.onChangelastName.bind(this);
+  //   this.onChangepassword = this.onChangepassword.bind(this);
+  //   this.onSubmit = this.onSubmit.bind(this);
+
+  //   this.state = {
+  //     email: "",
+  //     password: "",
+  //     firstName: "",
+  //     lastName: "",
+  //   };
+  // }
+    render () {
     return(
+      
         <div>
-        <div className={classes.root}>
+        <div >
         <AppBar position="static">
           <Toolbar>
-            <Typography variant="h6" className={classes.title}>
+            <Typography variant="h6" >
               About Us
             </Typography>
             <Button  color="inherit" to="/foodform" component={Link}>create Food Post</Button>
@@ -63,16 +81,10 @@ const Profile = () =>{
                justifyContent: "space-around",
           }}>
            <img className="item" src="https://lh3.googleusercontent.com/proxy/lerz6YHZ5j9e6kjQ41Wktz9qHC77Yu0lFWJGkvwJB6aCDU5IZb4Rs8eKwryQTLYr7_0FcRMjithLHNG7EKtOEknXByX_MlAcqIRysCGbeMsjLGeAMKs "/>
-           <img className="item" src="https://lh3.googleusercontent.com/proxy/lerz6YHZ5j9e6kjQ41Wktz9qHC77Yu0lFWJGkvwJB6aCDU5IZb4Rs8eKwryQTLYr7_0FcRMjithLHNG7EKtOEknXByX_MlAcqIRysCGbeMsjLGeAMKs "/>
-           <img className="item" src="https://lh3.googleusercontent.com/proxy/lerz6YHZ5j9e6kjQ41Wktz9qHC77Yu0lFWJGkvwJB6aCDU5IZb4Rs8eKwryQTLYr7_0FcRMjithLHNG7EKtOEknXByX_MlAcqIRysCGbeMsjLGeAMKs "/>
-           <img className="item" src="https://lh3.googleusercontent.com/proxy/lerz6YHZ5j9e6kjQ41Wktz9qHC77Yu0lFWJGkvwJB6aCDU5IZb4Rs8eKwryQTLYr7_0FcRMjithLHNG7EKtOEknXByX_MlAcqIRysCGbeMsjLGeAMKs "/>
-           <img className="item" src="https://lh3.googleusercontent.com/proxy/lerz6YHZ5j9e6kjQ41Wktz9qHC77Yu0lFWJGkvwJB6aCDU5IZb4Rs8eKwryQTLYr7_0FcRMjithLHNG7EKtOEknXByX_MlAcqIRysCGbeMsjLGeAMKs "/>
-           <img className="item" src="https://lh3.googleusercontent.com/proxy/lerz6YHZ5j9e6kjQ41Wktz9qHC77Yu0lFWJGkvwJB6aCDU5IZb4Rs8eKwryQTLYr7_0FcRMjithLHNG7EKtOEknXByX_MlAcqIRysCGbeMsjLGeAMKs "/>
-           <img className="item" src="https://lh3.googleusercontent.com/proxy/lerz6YHZ5j9e6kjQ41Wktz9qHC77Yu0lFWJGkvwJB6aCDU5IZb4Rs8eKwryQTLYr7_0FcRMjithLHNG7EKtOEknXByX_MlAcqIRysCGbeMsjLGeAMKs "/>
+       
           </div>
         </div>
         </div>
     )
 }
-
-export default Profile
+  }

@@ -221,6 +221,30 @@ require('dotenv').config(); // to read .env file
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 users.use(cors());
+
+users.get('/allpost',(req,res)=>{
+    console.log(User.userModel)
+    res.send("ok")
+    // User.find({}, function(err, docs) {
+    //     if (!err) { 
+    //         console.log(docs);
+    //         process.exit();
+    //     }
+    //     else {
+    //         throw err;
+    //     }
+    });
+    // .populate('postedBy',"_id userName")
+    // .then(post=>{
+    //     res.json({post})
+        
+    // })
+    // .catch(err=>{
+    //     console.log(err)
+    // })
+    // res.send("ok")
+
+
 users.post('/signUp', (req, res) => {
     const userData = {
         userName : req.body.myData.userName,
@@ -399,20 +423,21 @@ const storage = multer.diskStorage({
     //     feedBack: $("#feed").val(),
     //   };
       // postedBy:{
-          User.findOneAndUpdate(
-             {_id:obj.id},
-             { $push: { hospitalBill:{amount:hosBill.amount,hospitalName:hosBill.hospitalName,
-                hospitalPhoneNumber:hosBill.hospitalNumber,hospitalAddress:hosBill.hospitalAddress,
-                descAboutHealthPatient:hosBill.descAboutHealthPatient,patientPhoneNumber:hosBill.patientNumber,photo:imgurl
-            } } },
-            function (error, success) {
-                  if (error) {
-                      console.log(error);
-                  } else {
-                      console.log(success);
-                  }
-              });
+        //   User.findOneAndUpdate(
+        //      {_id:obj.id},
+        //      { $push: { hospitalBill:{amount:hosBill.amount,hospitalName:hosBill.hospitalName,
+        //         hospitalPhoneNumber:hosBill.hospitalNumber,hospitalAddress:hosBill.hospitalAddress,
+        //         descAboutHealthPatient:hosBill.descAboutHealthPatient,patientPhoneNumber:hosBill.patientNumber,photo:imgurl
+        //     } } },
+        //     function (error, success) {
+        //           if (error) {
+        //               console.log(error);
+        //           } else {
+        //               console.log(success);
+        //           }
+        //       });
       /*Now do where ever you want to do*/
+      console.log(req.body)
       if (!err) {
         return res.send(200).end();
       }

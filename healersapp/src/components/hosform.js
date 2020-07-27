@@ -10,17 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import $ from "jquery";
 var axios = require("axios");
 
-// const useStyles = makeStyles((theme) => ({
-//   root: {
-//     flexGrow: 1,
-//   },
-//   menuButton: {
-//     marginRight: theme.spacing(2),
-//   },
-//   title: {
-//     flexGrow: 1,
-//   },
-// }));
+
 
 class BillForm extends React.Component {
   constructor(props) {
@@ -40,7 +30,7 @@ class BillForm extends React.Component {
       hospitalName: $("#hosName").val(),
       hospitalAddress: $("#hosAdress").val(),
       descAboutHealthPatient: $("#healthDes").val(),
-      feedBack: $("#feed").val(),
+    
     };
     // $.post("http://localhost:8000/uploa", { myData: bill })
     //   .done(function () {
@@ -59,7 +49,7 @@ class BillForm extends React.Component {
       hospitalAddress: $("#hosAdress").val(),
       descAboutHealthPatient: $("#healthDes").val(),
       patientNumber:$('#patNum').val(),
-      feedBack: $("#feed").val(),
+     
     };
     console.log(bill);
     e.preventDefault();
@@ -160,16 +150,6 @@ class BillForm extends React.Component {
         </Grid> 
         </Grid>
         </div>
-        
-       
-        
-        {/* <Button
-          variant="contained"
-          color="primary"
-          onClick={this.handleHospitalBillSchema}
-        >
-          Submit
-        </Button> */}
       </form>
       </Grid> 
         </Grid>

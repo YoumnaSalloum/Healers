@@ -58,7 +58,7 @@ function MakePost(props){
     useEffect(() => {
       var data  = [{amount: "3000",hospialNam:"Farah",hospitalPhoneNumber:"3456789765",hospitalAddress:"yutregwfgfj",patientPhoneNumber:"87654324567",
       photo:"https://cdnuploads.aa.com.tr/uploads/Contents/2020/05/14/thumbs_b_c_88bedbc66bb57f0e884555e8250ae5f9.jpg?v=140708"}, {amount: "30450",hospialNam:"Islamic",hospitalPhoneNumber:"345678987",hospitalAddress:"iojktrdgfkj",patientPhoneNumber:"0-9876545",
-      photo:"https://cdnuploads.aa.com.tr/uploads/Contents/2020/05/14/thumbs_b_c_88bedbc66bb57f0e884555e8250ae5f9.jpg?v=140708"}]
+      photo:"https://www.imgacademy.com/themes/custom/imgacademy/images/helpbox-contact.jpg"}]
         
       setpost (data)
       // fetch("/allpost")

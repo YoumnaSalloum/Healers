@@ -24,6 +24,7 @@ class BillForm extends React.Component {
     this.handleHospitalBillSchema = this.handleHospitalBillSchema.bind(this);
   }
   handleHospitalBillSchema() {
+
     var bill = {
       amount: $("#amount").val(),
       hospitalNumber: $("#hosNum").val(),

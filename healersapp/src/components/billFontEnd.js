@@ -19,6 +19,9 @@ import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Button from '@material-ui/core/Button'
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+
 import $ from 'jquery'
 
 //test 
@@ -55,14 +58,27 @@ backgroundColor: red[500],
 // userName: "lubna"
 function MakePost(props){
     const { clases } = props;
-    console.log(props.userData.hospitalBill[0].photo)
-    const plzWork = '../../../server-side'
+
+    console.log(props.userData.hospitalBill[0].amount)
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
     const handleExpandClick = () => {
     setExpanded(!expanded);
     };
     return (
+        <div >
+        <AppBar position="static">
+          <Toolbar>
+            <Typography variant="h6" >
+              About Us
+            </Typography>
+            <Button  color="inherit" to="/foodform" component={Link}>create Food Post</Button>
+            <Button color="inherit" to="/createpost" component={Link}>create hospital bill Post</Button>
+            <Button color="inherit" to="/" component={Link} >HomePage</Button>
+            <Button >Logout</Button>
+          </Toolbar>
+        </AppBar>
+       
         <Grid
         container
         spacing={5}
@@ -141,6 +157,7 @@ function MakePost(props){
         </Card>
         </Grid> 
         </Grid>
+        </div>
         );
 }
 

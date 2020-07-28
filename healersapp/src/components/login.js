@@ -7,6 +7,8 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 // import Link from '@material-ui/core/Link';
 import {Link} from 'react-router-dom'
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
 import BillForm from './hosform'
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
@@ -62,7 +64,19 @@ $.post('http://localhost:8000/login',{myData: user })
 
   }
   render() { 
-    return ( <Container component="main" maxWidth="xs">
+    return (
+      <div >
+      <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h6" >
+            About Us
+          </Typography>
+
+          <Button  color="inherit" >Logout</Button>
+        </Toolbar>
+      </AppBar>
+     
+       <Container component="main" maxWidth="xs">
     <CssBaseline />
     <div className={this.classes.paper}>
       <Avatar className={this.classes.avatar}>
@@ -103,10 +117,12 @@ $.post('http://localhost:8000/login',{myData: user })
           fullWidth
           variant="contained"
           color="primary"
+          component={Link} 
+          to="/profile"
           className={this.classes.submit}
           onClick={this.handelLogin}
         >
-          <Link style={{color:'white'}} to="/" >Sign in</Link>   
+          log in 
         </Button>
         <Grid container>
           <Grid item xs>
@@ -123,7 +139,8 @@ $.post('http://localhost:8000/login',{myData: user })
       </form>
     </div>
     
-  </Container> );
+  </Container>
+  </div> );
   }
 }
  

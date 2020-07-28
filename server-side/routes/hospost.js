@@ -6,18 +6,19 @@ const HospitalPost = require('../../db/mongo');
 router.get('/allpost',(req,res)=>{
     HospitalPost.find()
     .populate('postedBy',"_id userName")
-    .then(posts=>{
-        res.json({posts})
+    .then(post=>{
+        res.json({post})
         
     })
     .catch(err=>{
         console.log(err)
     })
+    // res.send("ok")
 })
 
 router.post('/createHospitalPost',(req,res) =>{
-    const {amount,hospitalName,hospitalPhoneNumber, hospitalAddress,descAboutHealthPatient,patientPhoneNumber} = req.body
-    if(!amount || !hospitalName || !hospitalPhoneNumber || !hospitalAddress || !descAboutHealthPatient || !patientPhoneNumber){
+    const {amount,hospitalName,hospitalPhoneNumber, hospitalAddress,descAboutHealthPatient,patientPhoneNumber,photo} = req.body
+    if(!amount || !hospitalName || !hospitalPhoneNumber || !hospitalAddress || !descAboutHealthPatient || !patientPhoneNumber || !photo){
         return res.status(422).json({error:"Please add all the fields"})
     }
 
@@ -28,6 +29,7 @@ router.post('/createHospitalPost',(req,res) =>{
         hospitalAddress,
         descAboutHealthPatient,
         patientPhoneNumber,
+        photo,
         postedBy:req.user   //=> to know who put this post 
     })
     post.save().then(result =>{

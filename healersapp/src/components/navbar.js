@@ -1,16 +1,5 @@
 //main page 
 import React from 'react';
-import Grid from '@material-ui/core/Grid';
-
-//import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { BrowserRouter as Router, Route } from 'react-router-dom'
-import HospitalBill from "./hospitalbill.js";
-import BillForm from "./hosform.js";
-import IntersetForm from "./intresetform.js";
-import LogIn from "./login.js";
-import SignUp from "./signup.js";
-import Profile from "./profile.js"
-import SimpleTabs from "./foodCategories/tabs.js";
 import {Link} from 'react-router-dom'
 //navbar from material-ui
 import { makeStyles } from '@material-ui/core/styles';
@@ -18,8 +7,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-//complex buttons material ui 
-import ButtonBase from '@material-ui/core/ButtonBase';
+
 
 
 const images = [

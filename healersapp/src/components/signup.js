@@ -9,6 +9,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
 import $ from 'jquery'
 
 const useStyles = makeStyles((theme) => ({
@@ -21,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
   avatar: {
     margin: theme.spacing(1),
     backgroundColor: theme.palette.secondary.main,
+    alignItems: 'center',
   },
   form: {
     width: '100%', // Fix IE 11 issue.
@@ -44,15 +47,27 @@ class Signup extends Component {
      .fail(function (jqxhr, settings, ex) { alert('failed, ' + ex); });
      }
   render() {
-    return ( <Container component="main" maxWidth="xs">
+    return (
+      <div >
+      <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h6" >
+            About Us
+          </Typography>
+
+          <Button  color="inherit" >Logout</Button>
+        </Toolbar>
+      </AppBar>
+      <Container component="main" maxWidth="xs">
     <CssBaseline />
     <div className={this.classes.paper}>
       <Avatar className={this.classes.avatar}>
         <LockOutlinedIcon />
       </Avatar>
-      <Typography component="h1" variant="h5">
+      <Typography component="h1" variant="h5" >
         Sign up
       </Typography>
+      <br />
       <form className={this.classes.form} noValidate>
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6}>
@@ -91,14 +106,7 @@ class Signup extends Component {
               validators={['required', 'isEmail']}
               errorMessages={['this field is required', 'email is not valid']}
             />
-               {/* <TextValidator
-                    label="Email"
-  
-                    name="email"
-                    
-                    validators={['required', 'isEmail']}
-                    errorMessages={['this field is required', 'email is not valid']}
-                /> */}
+            
           </Grid>
           <Grid item xs={12}>
             <TextField
@@ -120,6 +128,8 @@ class Signup extends Component {
           color="primary"
           className={this.classes.submit}
           id='signUp'
+          component={Link} 
+          to="/login"
           onClick={this.handleSignUp}
         >
           Sign Up
@@ -131,7 +141,8 @@ class Signup extends Component {
         </Grid>
       </form>
     </div>
-  </Container> );
+  </Container>
+  </div> );
   }
 }
 export default Signup;

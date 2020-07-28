@@ -51,7 +51,8 @@ class BillForm extends React.Component {
       hospitalAddress: $("#hosAdress").val(),
       descAboutHealthPatient: $("#healthDes").val(),
       patientNumber:$('#patNum').val(),
-     
+      id:localStorage.getItem('id')
+
     };
     console.log(bill);
     e.preventDefault();

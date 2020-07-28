@@ -13,7 +13,7 @@ router.get('/allpost',(req,res)=>{
     .catch(err=>{
         console.log(err)
     })
-    // res.send("ok")
+    
 })
 
 router.post('/createHospitalPost',(req,res) =>{
@@ -51,6 +51,10 @@ router.get('/mypost',(req,res)=>{
         console.log(err)
     })
 })
+  
+  app.listen(port, () => {
+    console.log("listening to port 8000");
+  });
 
 
 module.exports = router

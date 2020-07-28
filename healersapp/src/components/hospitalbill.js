@@ -90,7 +90,6 @@ subheader=""
 className={classes.media}
 // img or video:
 image="/static/images/cards/paella.jpg"
-title="Paella dish"
 />
 
 <CardContent>

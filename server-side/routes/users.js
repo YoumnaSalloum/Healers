@@ -15,14 +15,25 @@ var transporter = nodemailer.createTransport({
       pass: 'youmna1998'
     }
   });
-//connect the route with User.js schema
 
+
+
+//connect the route with User.js schema
 const users = express.Router();
 const cors = require('cors');
 require('dotenv').config(); // to read .env file
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 users.use(cors());
+
+//route for profile 
+    users.post("/mypost",(req,res)=>{
+        User.findOne({id:req.body.email}).then(function (result) {
+         
+          console.log(result);
+           res.json(result);})
+      })
+
 
 
 users.post('/signUp', (req, res) => {

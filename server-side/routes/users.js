@@ -6,7 +6,6 @@ var multer = require('multer')
 var nodemailer = require('nodemailer');
 var session = require('express-session');
 var bodyParser = require('body-parser');
-
 var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -21,15 +20,6 @@ require('dotenv').config(); // to read .env file
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 users.use(cors());
-
-//route for profile 
-    users.post("/mypost",(req,res)=>{
-        User.findOne({id:req.body.email}).then(function (result) {
-         
-          console.log(result);
-           res.json(result);})
-      })
-
 users.post('/signUp', (req, res) => {
     const userData = {
         userName : req.body.myData.userName,
@@ -61,8 +51,6 @@ users.post('/signUp', (req, res) => {
         .catch(res => {
             res.send('error: ' + err)
         })
-
-    
 })
 var obj={}
 var obj2={email:''}
@@ -74,7 +62,6 @@ users.post('/login', (req, res) => {
         if(user) {
             if(bcrypt.compareSync(req.body.myData.password, user.password)) {
                 req.session.loggedin = true;
-                    //  req.session.name = results[0].name;
                 const payload = {
                     _id: user._id,
                     password: user.password,
@@ -82,11 +69,9 @@ users.post('/login', (req, res) => {
                 }
                 obj.id = user._id
                 obj2.email=user.email
-                // console.log( obj.id  )
                 let token = jwt.sign(payload, process.env.JWT_KEY+"", {
                     expiresIn: 1440
                 })
-                // console.log(payload)
                 res.send(token)
             } else {
                 res.json({error: "User dose not exist"})
@@ -94,7 +79,6 @@ users.post('/login', (req, res) => {
         } else {
             res.json({error: "User dose not exist"})
         }
-        // console.log(process.env.JWT_KEY)
     })
     .catch(err => {
         res.send('error: ' + err)
@@ -110,14 +94,15 @@ users.post('/send',(req,res)=>{
     var bill2 = {amount:0,hospitalName:'youmna'}
    var payment=req.body.payment
    var selected=req.body.selected
+   var feed=req.body.feed
    var id=req.body.id
-  
         User.findOne({id:id}).then(function(result){
+        console.log("youmna "+result)
                 var mailOptions = {
                     from: 'youmna61998@gmail.com',
                     to:obj2.email,
                     subject: 'Sending Email using Node.js',
-                    text:'someone pay for you '+payment+' $'+' and he/she will pay by : '+selected
+                    text:'someone pay for you '+payment+' $'+' and the way of payment is '+selected+' and the feedback is : '+feed
                   };
                   //
                   transporter.sendMail(mailOptions, function(error, info){
@@ -130,7 +115,6 @@ users.post('/send',(req,res)=>{
         res.send('youmna send: ')
         })
    })
-
 const storage = multer.diskStorage({
     destination: "./public/uploads/",
     filename: function (req, file, cb) {
@@ -141,7 +125,6 @@ const storage = multer.diskStorage({
     storage: storage,
     limits: { fileSize: 11000000 },
   }).single("myImage");
- 
   users.post("/upload", function (req, res) {
   var imgurl="";
     console.log(req.body);
@@ -152,7 +135,6 @@ const storage = multer.diskStorage({
        imgurl+=req.file.path
        console.log(imgurl)
       console.log("Request file ---", req.file.path); //Here you get file.
- 
           User.findOneAndUpdate(
              {id:hosBill.id},
              { $push: { hospitalBill:{amount:hosBill.amount,hospitalName:hosBill.hospitalName,
@@ -171,6 +153,32 @@ const storage = multer.diskStorage({
         return res.send(200).end();
       }
     });
- 
   });
+  users.post("/load", function (req, res) {
+      console.log(req.body);
+      var imgurl="";
+      upload(req, res, function (err) {
+        //  console.log(req.file)
+        console.log(req.body.Postdata)
+        var foodPost = JSON.parse(req.body.Postdata);
+        imgurl+=req.file.path
+        console.log(foodPost)
+        User.findOneAndUpdate(
+            {id:foodPost.id},
+            { $push: {FoodCategories:{ descriptionOfPrescription:foodPost.descOfPresc,Category:foodPost.category,
+                UserPhoneNumber:foodPost.userNumber,photo:imgurl
+           } } },
+           function (error, success) {
+                 if (error) {
+                     console.log(error);
+                 } else {
+                     console.log(success);
+                 }
+             });
+     /*Now do where ever you want to do*/
+     if (!err) {
+       return res.send(200).end();
+     }
+   });
+      }) 
 module.exports=users

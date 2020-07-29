@@ -83,7 +83,7 @@ function  Profile (props) {
             <Button  color="inherit" to="/foodform" component={Link}>create Food Post</Button>
             <Button color="inherit" to="/createpost" component={Link}>create hospital bill Post</Button>
             <Button color="inherit" to="/" component={Link} >HomePage</Button>
-            <Button >Logout</Button>
+            <Button  color="inherit" to="/" component={Link}>Logout</Button>
           </Toolbar>
         </AppBar>
         </div>

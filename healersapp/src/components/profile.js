@@ -58,6 +58,7 @@ function  Profile (props) {
   
     
     const [post, setpost] = useState([]);
+    const [food, setfood] = useState([]);
     
     useEffect(() => {
       const email = localStorage.getItem("id")
@@ -66,9 +67,12 @@ function  Profile (props) {
     
     .post("http://localhost:8000/mypost",myData)
 
-    .then(response => 
-     setpost(response.data.hospitalBill));
-    }, [])
+    .then(response => {
+      console.log(response.data.FoodCategories)
+      setpost(response.data.hospitalBill)
+      setfood(response.data.FoodCategories)
+      } )}
+     , [])
         
     
     return(
@@ -128,7 +132,7 @@ function  Profile (props) {
                       style={{ minHeight: '50vh' }}
                       >
                       <Grid item xs={3}>
-                    
+                    <div>
                       <Card>
                       <Card className={classes.root} >
                       <CardHeader
@@ -209,13 +213,78 @@ function  Profile (props) {
                       
                       </Card>
                       </Card>
-                       
+                       </div>
+                       <div>
+                       {food.map(ele=>(
+                         
+                       <Card>
+                      <Card className={classes.root} >
+                      <CardHeader
+                      avatar={
+                      <Avatar aria-label="recipe" className={classes.avatar}>
+                      </Avatar>
+                      }
+                      action={
+                      <IconButton aria-label="settings">
+                      <MoreVertIcon />
+                      </IconButton>
+                      }
+                      title="Food Prescriptions"
+                      subheader=""
+                      />
+                      <CardMedia
+                      className={classes.media}
+                     
+                       image = {ele.photo}
+                      title="Paella dish"
+                      />
+                      
+                      
+                      <CardContent>
+                      <Typography variant="body2" color="textSecondary" component="p">
+                      Type Of Disease = {ele.Category}
+                      </Typography>
+                      </CardContent>
+                      <CardActions disableSpacing>
+                      <IconButton aria-label="share">
+                      <ShareIcon />
+                      </IconButton>
+                      <IconButton
+                      className={clsx(classes.expand, {
+                      [classes.expandOpen]: expanded,
+                      })}
+                      onClick={handleExpandClick}
+                      aria-expanded={expanded}
+                      aria-label="show more"
+                      >
+                      <ExpandMoreIcon />
+                      </IconButton>
+                      </CardActions>
+                      <Collapse in={expanded} timeout="auto" unmountOnExit>
+                      <CardContent>
+                      <Typography paragraph></Typography>
+                      <Typography paragraph>
+                      </Typography>
+                      <Typography paragraph>
+                      descriptionOfPrescription =
+                      {ele.descriptionOfPrescription }
+                      </Typography>
+                      <Typography paragraph>
+                      UserPhoneNumber = 
+                      {ele.UserPhoneNumber}
+                      </Typography>
+    
+                      </CardContent>
+                      </Collapse>
+                      
+                      </Card>
+                      </Card>
+                       ))}
+                       </div>
                       </Grid> 
                       </Grid>
-                     
                       
-              
-                      
+
                       ))}
            
        

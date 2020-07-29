@@ -104,6 +104,7 @@ function MakePost(props){
         <CardActions disableSpacing>
         <IconButton aria-label="share">
         <ShareIcon />
+        
         </IconButton>
         <IconButton
         className={clsx(classes.expand, {

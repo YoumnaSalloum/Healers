@@ -15,14 +15,25 @@ var transporter = nodemailer.createTransport({
       pass: 'youmna1998'
     }
   });
-//connect the route with User.js schema
 
+
+
+//connect the route with User.js schema
 const users = express.Router();
 const cors = require('cors');
 require('dotenv').config(); // to read .env file
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 users.use(cors());
+
+//route for profile 
+    users.post("/mypost",(req,res)=>{
+        User.findOne({id:req.body.email}).then(function (result) {
+         
+          console.log(result);
+           res.json(result);})
+      })
+
 
 
 users.post('/signUp', (req, res) => {
@@ -190,16 +201,25 @@ const storage = multer.diskStorage({
  
   });
 
-  users.post("/delet", function (req, res) {
-    var id=req.body.id
-    var query = { _id: id }
+  users.post("/delete", function (req, res) {
+      //userid
+      console.log(req.body.myData)
+    // var id=req.body.id
+    var query = { patientPhoneNumber: req.body.myData.billId}
+    var str=`hospitalBill.${req.body.myData.billId}`
     
-        User.findOneAndDelete(query).then(function(result){
-        if(result.hospitalBill[0].amount===0){
+         User.findOne({id:req.body.myData.userid}).then(function(result){
+    
+            console.log(result.hospitalBill.splice(req.body.myData.billId,1))
+            result.save()
 
-        }
+         })
+    //     User.findOneAndDelete(query).then(function(result){
+    //     // if(result.hospitalBill[0].amount===0){
 
-    })
+    //     // }
+
+    // })
 
 
 

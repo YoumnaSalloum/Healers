@@ -12,9 +12,7 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import {Link} from 'react-router-dom'
-import IntersetForm from './intresetform'
 import { red } from '@material-ui/core/colors';
-import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
@@ -59,13 +57,22 @@ backgroundColor: red[500],
 function MakePost(props){
     const { clases } = props;
 
+    //console.log(props.userData.hospitalBill[0].photo)
+    const plzWork = '../../../server-side'
+
+
     console.log(props.userData.hospitalBill[0].amount)
+
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
     const handleExpandClick = () => {
     setExpanded(!expanded);
     };
     return (
+
+        <div>{props.userData.hospitalBill.map((bill)=>(
+        <Grid 
+
         <div >
         <AppBar position="static">
           <Toolbar>
@@ -80,6 +87,7 @@ function MakePost(props){
         </AppBar>
        
         <Grid
+
         container
         spacing={5}
         direction="column"
@@ -110,10 +118,11 @@ function MakePost(props){
         title="Paella dish"
     />
        {/* <img src={Pic}/>*/}
+      {/* <img src={'../../../server-side/'+bill.photo} /> */}
       {/* <img src={require('./../../../server-side/public/uploads/IMAGE-1595262248867.jpg')}/> */}
         <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-        Bill amount:{props.userData.hospitalBill[0].amount}
+        Bill amount:{bill.amount}
         </Typography>
         </CardContent>
         <CardActions disableSpacing>
@@ -137,16 +146,16 @@ function MakePost(props){
         <Typography paragraph>
         </Typography>
         <Typography paragraph>
-        The description of patient health situation:{props.userData.hospitalBill[0].descAboutHealthPatient}
+        The description of patient health situation:{bill.descAboutHealthPatient}
         </Typography>
         <Typography paragraph>
-        Hospital Name :{props.userData.hospitalBill[0].hospitalName}
+        Hospital Name :{bill.hospitalName}
         </Typography>
         <Typography>
-        Hospital Address :{props.userData.hospitalBill[0].hospitalAddress}
+        Hospital Address :{bill.hospitalAddress}
         </Typography>
         <Typography>
-        Hospital phone number :{props.userData.hospitalBill[0].hospitalPhoneNumber}
+        Hospital phone number :{bill.hospitalPhoneNumber}
         </Typography>
         <Typography>
         <Button color="secondary">    <Link to="/IntersetForm">INTEREST</Link></Button>
@@ -156,7 +165,11 @@ function MakePost(props){
         </Card>
         </Card>
         </Grid> 
+
+        </Grid>))}
+
         </Grid>
+
         </div>
         );
 }

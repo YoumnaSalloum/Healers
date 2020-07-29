@@ -21,7 +21,7 @@ import Grid from '@material-ui/core/Grid';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-
+import $ from 'jquery'
 const useStyles = makeStyles((theme) => ({
   root: {
   alignText: "center",
@@ -69,7 +69,7 @@ function  Profile (props) {
     .then(response => 
      setpost(response.data.hospitalBill));
     }, [])
-        
+    
     
     return(
       

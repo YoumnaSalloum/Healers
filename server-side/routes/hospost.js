@@ -41,8 +41,8 @@ router.post('/createHospitalPost',(req,res) =>{
 })
 
 // the user can see all his posts
-router.get('/mypost',(req,res)=>{
-    HospitalPost.find({postedBy:req.user._id})
+router.post('/mypost',(req,res)=>{
+    HospitalPost.find({id:req.body.myData.id})
     .populate('postedBy',"_id userName")
     .then(mypost=>{
         res.json({mypost})

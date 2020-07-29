@@ -39,6 +39,12 @@ app.get("/mayis",(req,res)=>{
     console.log(result);
      res.json(result);})
 })
+app.get("/allUsers",(req,res)=>{
+  User.findOne({id:req.body.id}).then(function (result) {
+   
+    console.log(result);
+     res.json(result);})
+})
 
 app.listen(port, () => {
   console.log("listening to port 8000");

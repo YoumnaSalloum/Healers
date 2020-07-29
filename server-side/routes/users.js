@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const express =require ('express')
+
 var path = require('path')
 const User = require('../../db/mongo');
 var multer = require('multer')
@@ -15,6 +16,7 @@ var transporter = nodemailer.createTransport({
     }
   });
 //connect the route with User.js schema
+
 const users = express.Router();
 const cors = require('cors');
 require('dotenv').config(); // to read .env file
@@ -22,13 +24,6 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 users.use(cors());
 
-//route for profile 
-    users.post("/mypost",(req,res)=>{
-        User.findOne({id:req.body.email}).then(function (result) {
-         
-          console.log(result);
-           res.json(result);})
-      })
 
 users.post('/signUp', (req, res) => {
     const userData = {
@@ -62,7 +57,6 @@ users.post('/signUp', (req, res) => {
             res.send('error: ' + err)
         })
 
-    
 })
 var obj={}
 var obj2={email:''}
@@ -74,7 +68,7 @@ users.post('/login', (req, res) => {
         if(user) {
             if(bcrypt.compareSync(req.body.myData.password, user.password)) {
                 req.session.loggedin = true;
-                    //  req.session.name = results[0].name;
+                    
                 const payload = {
                     _id: user._id,
                     password: user.password,
@@ -82,11 +76,11 @@ users.post('/login', (req, res) => {
                 }
                 obj.id = user._id
                 obj2.email=user.email
-                // console.log( obj.id  )
+               
                 let token = jwt.sign(payload, process.env.JWT_KEY+"", {
                     expiresIn: 1440
                 })
-                // console.log(payload)
+               
                 res.send(token)
             } else {
                 res.json({error: "User dose not exist"})
@@ -94,7 +88,7 @@ users.post('/login', (req, res) => {
         } else {
             res.json({error: "User dose not exist"})
         }
-        // console.log(process.env.JWT_KEY)
+        
     })
     .catch(err => {
         res.send('error: ' + err)
@@ -110,14 +104,18 @@ users.post('/send',(req,res)=>{
     var bill2 = {amount:0,hospitalName:'youmna'}
    var payment=req.body.payment
    var selected=req.body.selected
+   var feed=req.body.feed
    var id=req.body.id
   
         User.findOne({id:id}).then(function(result){
+     
+        console.log("youmna "+result)
+       
                 var mailOptions = {
                     from: 'youmna61998@gmail.com',
                     to:obj2.email,
                     subject: 'Sending Email using Node.js',
-                    text:'someone pay for you '+payment+' $'+' and he/she will pay by : '+selected
+                    text:'someone pay for you '+payment+' $'+' and the way of payment is '+selected+' and the feedback is : '+feed
                   };
                   //
                   transporter.sendMail(mailOptions, function(error, info){
@@ -127,6 +125,7 @@ users.post('/send',(req,res)=>{
                       console.log('Email sent: ' + info.response);
                     }
                });
+            
         res.send('youmna send: ')
         })
    })
@@ -148,11 +147,28 @@ const storage = multer.diskStorage({
     upload(req, res, function (err) {
       var hosBill = JSON.parse(req.body.Billdata);
       console.log(hosBill.amount)
+     
       console.log(hosBill.id)
-       imgurl+=req.file.path
+       imgurl+= req.file.destination+ req.file.filename
        console.log(imgurl)
+
+      console.log("Request file ---", req.file.destination+ req.file.filename); //Here you get file.
+    //push bill for hospitalbill array
+    // amount:{ hospitalName:{ hospitalPhoneNumber:{ hospitalAddress:{ descAboutHealthPatient: patientPhoneNumber:{
+      // photo
+    //   var bill = {
+    //     amount: $("#amount").val(),
+    //     hospitalNumber: $("#hosNum").val(),
+    //     hospitalName: $("#hosName").val(),
+    //     hospitalAddress: $("#hosAdress").val(),
+    //     descAboutHealthPatient: $("#healthDes").val(),
+    //     patientNumber
+    //     feedBack: $("#feed").val(),
+    //   };
+      // postedBy:{
+
       console.log("Request file ---", req.file.path); //Here you get file.
- 
+
           User.findOneAndUpdate(
              {id:hosBill.id},
              { $push: { hospitalBill:{amount:hosBill.amount,hospitalName:hosBill.hospitalName,
@@ -190,6 +206,16 @@ const storage = multer.diskStorage({
 
   })
 
+  users.post('/mypost',(req,res)=>{
+    User.find({id:req.body.myData.id})
+    .populate('postedBy',"_id userName")
+    .then(mypost=>{
+        res.json({mypost})
+    })
+    .catch(err=>{
+        console.log(err)
+    })
+})
 
 
 

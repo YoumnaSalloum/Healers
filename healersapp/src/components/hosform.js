@@ -64,6 +64,7 @@ class BillForm extends React.Component {
         "content-type": "multipart/form-data",
       },
     };
+    
     axios
       .post("http://localhost:8000/upload", formData, bill, config)
       .then((response) => {

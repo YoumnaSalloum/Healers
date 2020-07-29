@@ -21,7 +21,7 @@ import Grid from '@material-ui/core/Grid';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-
+import $ from 'jquery'
 const useStyles = makeStyles((theme) => ({
   root: {
   alignText: "center",
@@ -46,7 +46,18 @@ const useStyles = makeStyles((theme) => ({
   backgroundColor: red[500],
   },
   }));
-  
+
+ function handleOnclick(event){
+  event.preventDefault();
+  console.log(event.target.id)
+ $.post('http://localhost:8000/delete',{myData:{billId:event.target.id,userid:localStorage.getItem('id')}})
+  .done( (result) =>{ console.log(result)
+      
+      console.log(result)
+        //storeMe=result
+  })
+  .fail( (jqxhr, settings, ex) =>{console.log('lala') })
+}
 
 function  Profile (props) {
   const { clases } = props;
@@ -58,7 +69,7 @@ function  Profile (props) {
   
     
     const [post, setpost] = useState([]);
-    
+    const [username,setusername] = useState([]);
     useEffect(() => {
       const email = localStorage.getItem("id")
       const myData = {email:email}
@@ -66,11 +77,14 @@ function  Profile (props) {
     
     .post("http://localhost:8000/mypost",myData)
 
-    .then(response => 
-     setpost(response.data.hospitalBill));
-    }, [])
-        
+    .then(response => {
+     setpost(response.data.hospitalBill)
+     setusername(response.data.userName)
+     } )}
+    , [])
     
+  
+
     return(
       
         <div>
@@ -83,7 +97,7 @@ function  Profile (props) {
             <Button  color="inherit" to="/foodform" component={Link}>create Food Post</Button>
             <Button color="inherit" to="/createpost" component={Link}>create hospital bill Post</Button>
             <Button color="inherit" to="/" component={Link} >HomePage</Button>
-            <Button  color="inherit" to="/" component={Link}>Logout</Button>
+            <Button >Logout</Button>
           </Toolbar>
         </AppBar>
         </div>
@@ -104,8 +118,8 @@ function  Profile (props) {
                    />
                 </div>
                 <div>
-                <h4>userName</h4>
-                   <h5> posts:</h5>
+          <h4>userName:{username}</h4>
+          <h5> posts:{post.length}</h5>
                 <div style={{display:"flex",justifyContent:"space-between"}}>
                   
                 </div>
@@ -117,8 +131,9 @@ function  Profile (props) {
                justifyContent: "space-around",
                
           }}>
-                    {post.map(item=>(
-                      
+                    {post.map((item,index)=>(
+                    
+                     
                       <Grid
                       container
                       spacing={5}
@@ -128,7 +143,7 @@ function  Profile (props) {
                       style={{ minHeight: '50vh' }}
                       >
                       <Grid item xs={3}>
-                    
+                      <button id={index} onClick={handleOnclick}>delete</button>
                       <Card>
                       <Card className={classes.root} >
                       <CardHeader
@@ -214,7 +229,7 @@ function  Profile (props) {
                       </Grid>
                      
                       
-              
+                      
                       
                       ))}
            
@@ -224,6 +239,6 @@ function  Profile (props) {
         </div>
     )
 }
-  
-
-  export default Profile
+//////////
+//lubna
+export default Profile;

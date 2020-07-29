@@ -33,8 +33,7 @@ console.log($)
 
     handle(event){
     
-  var user = {id:localStorage.getItem('id'),payment:$('#pay').val(),selected:$('#select').val(),feed:$('#feedback').val()}
-  console.log($('#feedback').val())
+  var user = {id:localStorage.getItem('id'),payment:$('#pay').val(),selected:$('#select').val()}
       axios.post('http://localhost:8000/send', user)
           .then((res) => {
               console.log(res.data)

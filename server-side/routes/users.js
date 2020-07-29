@@ -1,16 +1,13 @@
 const mongoose = require('mongoose')
 const express =require ('express')
-//
+
 var path = require('path')
 const User = require('../../db/mongo');
 var multer = require('multer')
 var nodemailer = require('nodemailer');
 var session = require('express-session');
 var bodyParser = require('body-parser');
-// //for testing
-// app.get('/',function(req,res){
-//     res.send("youmna")
-// })
+
 var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -19,36 +16,13 @@ var transporter = nodemailer.createTransport({
     }
   });
 //connect the route with User.js schema
-// const User = mongoose.model('User')
+
 const users = express.Router();
 const cors = require('cors');
 require('dotenv').config(); // to read .env file
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 users.use(cors());
-
-users.get('/allpost',(req,res)=>{
-    console.log(User.userModel)
-    res.send("ok")
-    // User.find({}, function(err, docs) {
-    //     if (!err) { 
-    //         console.log(docs);
-    //         process.exit();
-    //     }
-    //     else {
-    //         throw err;
-    //     }
-    });
-    // .populate('postedBy',"_id userName")
-    // .then(post=>{
-    //     res.json({post})
-        
-    // })
-    // .catch(err=>{
-    //     console.log(err)
-    // })
-    // res.send("ok")
-
 
 
 users.post('/signUp', (req, res) => {
@@ -82,8 +56,7 @@ users.post('/signUp', (req, res) => {
         .catch(res => {
             res.send('error: ' + err)
         })
-    // }
-    // else{console.log("error")}
+
 })
 var obj={}
 var obj2={email:''}
@@ -95,7 +68,7 @@ users.post('/login', (req, res) => {
         if(user) {
             if(bcrypt.compareSync(req.body.myData.password, user.password)) {
                 req.session.loggedin = true;
-                    //  req.session.name = results[0].name;
+                    
                 const payload = {
                     _id: user._id,
                     password: user.password,
@@ -103,11 +76,11 @@ users.post('/login', (req, res) => {
                 }
                 obj.id = user._id
                 obj2.email=user.email
-                // console.log( obj.id  )
+               
                 let token = jwt.sign(payload, process.env.JWT_KEY+"", {
                     expiresIn: 1440
                 })
-                // console.log(payload)
+               
                 res.send(token)
             } else {
                 res.json({error: "User dose not exist"})
@@ -115,7 +88,7 @@ users.post('/login', (req, res) => {
         } else {
             res.json({error: "User dose not exist"})
         }
-        // console.log(process.env.JWT_KEY)
+        
     })
     .catch(err => {
         res.send('error: ' + err)
@@ -133,46 +106,11 @@ users.post('/send',(req,res)=>{
    var selected=req.body.selected
    var feed=req.body.feed
    var id=req.body.id
-    // User.findByIdAndUpdate({id:"5f15c9d9e4a194183f0ac89a"}).then(function(result){
-        // console.log(result)
-        // result[0].hospitalBill.push(bill)
-        // result[1].hospitalBill.push(bill2)
-        //  User.findByIdAndUpdate(
-        //     { _id: "5f15c9d9e4a194183f0ac89a" },
-        //     {
-        //       $push: {
-        //         hospitalBill: {
-        //             amount:0,hospitalName:"sahar"
-        //         }
-        //       }
-        //     },
-        //     { new: true, useFindAndModify: false }
-        //   );
-        // var x={payment:req.body.payment,selected:req.body.selected,feed:req.body.feed}
-        // var hospitalBill = {  amount:0,hospitalName:"testing with obj.id for amneh"};
-        // console.log(obj.id)
+  
         User.findOne({id:id}).then(function(result){
-        // console.log(result)
-        // console.log(typeof(result))
-        // //push bill for hospitalbill array
-        // User.findOneAndUpdate(
-        //    {_id:obj.id},
-        //    { $push: { hospitalBill: hospitalBill  } },
-        //   function (error, success) {
-        //         if (error) {
-        //             console.log(error);
-        //         } else {
-        //             console.log(success);
-        //         }
-        //     });
-        // console.log(obj2.email)
-        // console.log(result.hospitalBill[0].amount)
-        //>>r[i]>>[ob,ob]
+     
         console.log("youmna "+result)
-        // for(var i in result){
-            // console.log("youmna "+result[i])
-            // if(result.hospitalBill[0].amount===0){
-                // console.log("inside if amount")
+       
                 var mailOptions = {
                     from: 'youmna61998@gmail.com',
                     to:obj2.email,
@@ -187,15 +125,11 @@ users.post('/send',(req,res)=>{
                       console.log('Email sent: ' + info.response);
                     }
                });
-            // }//if
-            // else{console.log("amount is not 0")}
-            // }//for loop
-        // console.log(result)
-    //   res.send(result[0].hospitalBill)
+            
         res.send('youmna send: ')
         })
    })
-// res.send("hey")
+
 const storage = multer.diskStorage({
     destination: "./public/uploads/",
     filename: function (req, file, cb) {
@@ -206,17 +140,18 @@ const storage = multer.diskStorage({
     storage: storage,
     limits: { fileSize: 11000000 },
   }).single("myImage");
-  //const router = express.Router();
+ 
   users.post("/upload", function (req, res) {
   var imgurl="";
     console.log(req.body);
     upload(req, res, function (err) {
       var hosBill = JSON.parse(req.body.Billdata);
       console.log(hosBill.amount)
-      // console.log("Request ---",  req.body);
+     
       console.log(hosBill.id)
        imgurl+= req.file.destination+ req.file.filename
        console.log(imgurl)
+
       console.log("Request file ---", req.file.destination+ req.file.filename); //Here you get file.
     //push bill for hospitalbill array
     // amount:{ hospitalName:{ hospitalPhoneNumber:{ hospitalAddress:{ descAboutHealthPatient: patientPhoneNumber:{
@@ -231,6 +166,9 @@ const storage = multer.diskStorage({
     //     feedBack: $("#feed").val(),
     //   };
       // postedBy:{
+
+      console.log("Request file ---", req.file.path); //Here you get file.
+
           User.findOneAndUpdate(
              {id:hosBill.id},
              { $push: { hospitalBill:{amount:hosBill.amount,hospitalName:hosBill.hospitalName,
@@ -251,4 +189,36 @@ const storage = multer.diskStorage({
     });
  
   });
+
+  users.post("/load", function (req, res) {
+      console.log(req.body);
+      var imgurl="";
+      upload(req, res, function (err) {
+        //  console.log(req.file)
+        console.log(req.body.Postdata)
+        var foodPost = JSON.parse(req.body.Postdata);
+        imgurl+=req.file.path
+        console.log(foodPost)
+       
+        User.findOneAndUpdate(
+            {id:foodPost.id},
+            { $push: {FoodCategories:{ descriptionOfPrescription:foodPost.descOfPresc,Category:foodPost.category,
+                UserPhoneNumber:foodPost.userNumber,photo:imgurl
+           
+           } } },
+           function (error, success) {
+                 if (error) {
+                     console.log(error);
+                 } else {
+                     console.log(success);
+                 }
+             });
+     /*Now do where ever you want to do*/
+     if (!err) {
+       return res.send(200).end();
+     }
+   });
+
+      }) 
+
 module.exports=users

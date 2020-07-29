@@ -92,7 +92,7 @@ class BillForm extends React.Component {
           <Button  color="inherit" to="/foodform" component={Link}>create Food Post</Button>
           <Button color="inherit" to="/profile" component={Link} >Profile</Button>
           <Button color="inherit" to="/" component={Link} >HomePage</Button>
-          <Button >Logout</Button>
+          <Button  color="inherit" to="/" component={Link}>Logout</Button>
         </Toolbar>
       </AppBar>
       </div>

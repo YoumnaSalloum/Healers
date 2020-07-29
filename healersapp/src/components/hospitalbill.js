@@ -175,14 +175,3 @@ return(
 )
     }}
 export default HospitalBill;
-
-
-
-
-
-
-
-
-
-
-

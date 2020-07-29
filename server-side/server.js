@@ -63,8 +63,3 @@ app.get('/mypost',(req,res)=>{
 app.listen(port, () => {
   console.log("listening to port 8000");
 });
-
-
-
-
-

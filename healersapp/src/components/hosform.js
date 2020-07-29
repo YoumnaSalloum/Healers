@@ -8,6 +8,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import $ from "jquery";
+//using media upload part
 var axios = require("axios");
 
 
@@ -50,7 +51,8 @@ class BillForm extends React.Component {
       hospitalAddress: $("#hosAdress").val(),
       descAboutHealthPatient: $("#healthDes").val(),
       patientNumber:$('#patNum').val(),
-     
+      id:localStorage.getItem('id')
+
     };
     console.log(bill);
     e.preventDefault();
@@ -62,6 +64,7 @@ class BillForm extends React.Component {
         "content-type": "multipart/form-data",
       },
     };
+    
     axios
       .post("http://localhost:8000/upload", formData, bill, config)
       .then((response) => {

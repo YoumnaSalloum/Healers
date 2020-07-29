@@ -40,6 +40,18 @@ app.get("/mayis",(req,res)=>{
      res.json(result);})
 })
 
+// the user can see all his posts
+app.get('/mypost',(req,res)=>{
+  HospitalPost.find({postedBy:req.user._id})
+  .populate('postedBy',"_id userName")
+  .then(mypost=>{
+      res.json({mypost})
+  })
+  .catch(err=>{
+      console.log(err)
+  })
+})
+
 app.listen(port, () => {
   console.log("listening to port 8000");
 });

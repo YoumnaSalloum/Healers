@@ -18,14 +18,35 @@ var transporter = nodemailer.createTransport({
       pass: 'youmna1998'
     }
   });
+<<<<<<< HEAD:server-side/routes/Users.js
 //connect the route with User.js schema
 // const User = mongoose.model('User')
+=======
+
+
+
+//connect the route with User.js schema
+>>>>>>> c84096ba4c31d204c25f4cc9e2fe0cc80b26baa7:server-side/routes/users.js
 const users = express.Router();
 const cors = require('cors');
 require('dotenv').config(); // to read .env file
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 users.use(cors());
+<<<<<<< HEAD:server-side/routes/Users.js
+=======
+
+//route for profile 
+    users.post("/mypost",(req,res)=>{
+        User.findOne({id:req.body.email}).then(function (result) {
+         
+          console.log(result);
+           res.json(result);})
+      })
+
+
+
+>>>>>>> c84096ba4c31d204c25f4cc9e2fe0cc80b26baa7:server-side/routes/users.js
 users.post('/signUp', (req, res) => {
     const userData = {
         userName : req.body.myData.userName,

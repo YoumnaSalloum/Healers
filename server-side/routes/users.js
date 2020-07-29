@@ -149,10 +149,26 @@ const storage = multer.diskStorage({
       console.log(hosBill.amount)
      
       console.log(hosBill.id)
-       imgurl+=req.file.path
+       imgurl+= req.file.destination+ req.file.filename
        console.log(imgurl)
+
+      console.log("Request file ---", req.file.destination+ req.file.filename); //Here you get file.
+    //push bill for hospitalbill array
+    // amount:{ hospitalName:{ hospitalPhoneNumber:{ hospitalAddress:{ descAboutHealthPatient: patientPhoneNumber:{
+      // photo
+    //   var bill = {
+    //     amount: $("#amount").val(),
+    //     hospitalNumber: $("#hosNum").val(),
+    //     hospitalName: $("#hosName").val(),
+    //     hospitalAddress: $("#hosAdress").val(),
+    //     descAboutHealthPatient: $("#healthDes").val(),
+    //     patientNumber
+    //     feedBack: $("#feed").val(),
+    //   };
+      // postedBy:{
+
       console.log("Request file ---", req.file.path); //Here you get file.
-   
+
           User.findOneAndUpdate(
              {id:hosBill.id},
              { $push: { hospitalBill:{amount:hosBill.amount,hospitalName:hosBill.hospitalName,

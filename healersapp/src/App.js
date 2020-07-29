@@ -14,6 +14,7 @@ import Signup from "./components/signup.js";
 import Profile from "./components/profile.js"
 //test
 
+import HospitalBill from './components/hospitalbill'
 
 function App(){
   return (

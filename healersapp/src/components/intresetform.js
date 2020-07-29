@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import TextField from '@material-ui/core/TextField';
-import { makeStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import InputAdornment from '@material-ui/core/InputAdornment';
 import FormControl from '@material-ui/core/FormControl';
 import Grid from '@material-ui/core/Grid';
-import AccountCircle from '@material-ui/icons/AccountCircle';
 import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import {Link} from 'react-router-dom'
 import $ from 'jquery'
 import axios from "axios";
 
@@ -52,47 +52,58 @@ console.log($)
 }
     render(){
     return (
+      <div>
+      <div >
+      <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h6" >
+            About Us
+          </Typography>
+          <Button color="inherit" to="/createpost" component={Link}>create hospital bill Post</Button>
+          <Button  color="inherit" to="/foodform" component={Link}>create Food Post</Button>
+          <Button color="inherit" to="/profile" component={Link} >Profile</Button>
+          <Button color="inherit" to="/" component={Link} >HomePage</Button>
+         
+        </Toolbar>
+      </AppBar>
+      </div>
       <Grid
       container
-      spacing={5}
+      spacing={9}
       direction="column"
       alignItems="center"
       justify="center"
-      style={{ minHeight: '100vh' }}
+      style={{ minHeight: '70vh' }}
       >
-      <Grid item xs={3}>
+      <Grid item xs={9}>
         <div>
       <div >
         <FormControl >
-          <span>How much you can pay?</span>
+          <h1>How much you can pay?</h1>
           <br />
           <Input  type='number'   
           id='pay'   
           />
         </FormControl>
         <div>
-        <p>How do you want to pay?</p>
+        <h1>How do you want to pay?</h1>
         <select id='select'>
         <option value="to the hospital directly">to the hospital directly</option>
         <option value="to the patient directly">to the patient directly</option>
-        <option value="others">others</option>
+        <option value="to the patient directly">I have someone in the hospital and i can decrease the bill amount </option>
       </select></div>
-      <input hidden={true} id='others'/>
-     <br />
-     <br />
-     <div >
-     <p>please contact the patient with this phone number:- 0796776458</p>
-    please give us feedback 
-     <input id='feedback' />
-     </div>
+      
      <br />
       <Button variant="contained" color="primary"  onClick={this.handle}>
       Submit
     </Button>
+    <h2>please send us feed back about patient health situation
+       on this email "youmna61998@gmailcom"</h2>
       </div>
       </div>
       </Grid> 
         </Grid>
+        </div>
     );
     }
   }

@@ -72,7 +72,7 @@ $.post('http://localhost:8000/login',{myData: user })
             About Us
           </Typography>
 
-          <Button  color="inherit" >Logout</Button>
+          <Button color="inherit" to="/" component={Link}>Logout</Button>
         </Toolbar>
       </AppBar>
      

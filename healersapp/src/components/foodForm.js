@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
@@ -11,7 +10,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import $ from 'jquery'
 var axios = require("axios");
-
 const useStyles = makeStyles((theme) => ({
   root: {
     '& > *': {
@@ -20,9 +18,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-
-
-
 export default class FoodForm  extends React.Component {
   constructor(props){
     super(props)
@@ -36,16 +31,12 @@ export default class FoodForm  extends React.Component {
     // this.handleFoodCategoriesSchema = this.handleFoodCategoriesSchema.bind(this)
   }
   // handleFoodCategoriesSchema(){
-    
   //    var post = {
   //   descriptionOfPrescription:$('#descriptionOfPrescription').val(),
   //    UserPhoneNumber:$('#UserPhoneNumber').val(),
   //    Category:$('#Category').val(),
   //    photo:$('#photo').val()}
-
   //    }
- 
-
      onFormSubmit(e) {
      var post = {
       category: $("#category").val(),
@@ -53,7 +44,6 @@ export default class FoodForm  extends React.Component {
       descOfPresc: $("#descOfPresc").val(),
      photo:$('#photo').val(),
       id:localStorage.getItem('id')
-
     };
     console.log(post);
     e.preventDefault();
@@ -90,7 +80,7 @@ render (){
         <Button color="inherit" to="/createpost" component={Link}>create hospital bill Post</Button>
         <Button color="inherit" to="/profile" component={Link} >Profile</Button>
         <Button color="inherit" to="/" component={Link} >HomePage</Button>
-        <Button >Logout</Button>
+        <Button  color="inherit" to="/" component={Link}>Logout</Button>
       </Toolbar>
     </AppBar>
     </div>
@@ -106,20 +96,15 @@ render (){
       <div >
     <form className={this.classes.root} noValidate autoComplete="off" onSubmit={this.onFormSubmit}>
     <h1>Food Prescription Form </h1>
-  
     <TextField id="category" label="Type of disease" /><br />
-    
       <TextField id="userNumber" label="Phone number" /><br />
-   
       <TextField id="descOfPresc" label="description of prescription" /><br />
       <br />
     upload an image
     <input type="file" id="photo" name="img" accept="image/*" placeholder='upload an image' onChange={this.onChange}/><br />
-   
       <Button variant="contained" color="primary" component={Link} to="/foodCategories" onClick={this.onFormSubmit}>
       Submit
     </Button>
-   
     </form>
     </div>
     </Grid> 
@@ -128,4 +113,3 @@ render (){
   );
 }
 }
-

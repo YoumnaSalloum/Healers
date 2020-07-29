@@ -9,7 +9,9 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-
+import Toolbar from '@material-ui/core/Toolbar';
+import {Link} from 'react-router-dom'
+import Button from '@material-ui/core/Button';
 //code for cards
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
@@ -42,7 +44,7 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box p={3}>
+        <Box p={3}> 
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -100,6 +102,11 @@ const useStyless = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
+    alignItems: 'center',
+  },
+  app: {
+   
+    alignItems: 'center',
   },
 }));
 
@@ -119,8 +126,21 @@ export default function SimpleTabs() {
   };
 
   return (
+    <div >
+    <AppBar position="static">
+      <Toolbar>
+        <Typography variant="h6" >
+          About Us
+        </Typography>
+        <Button  color="inherit" to="/foodform" component={Link}>create Food Post</Button>
+        <Button color="inherit" to="/createpost" component={Link}>create hospital bill Post</Button>
+        <Button color="inherit" to="/" component={Link} >HomePage</Button>
+        <Button >Logout</Button>
+      </Toolbar>
+    </AppBar>
+    
     <div className={classes1.root}>
-      <AppBar position="static">
+      <AppBar className={classes1.app} position="static">
         <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
           <Tab label=" Diabetes" {...a11yProps(0)} />
           <Tab label=" Pressure" {...a11yProps(1)} />
@@ -344,6 +364,7 @@ style={{ minHeight: '100vh' }}
       </Grid> 
 </Grid>
       </TabPanel>
+    </div>
     </div>
   );
 }

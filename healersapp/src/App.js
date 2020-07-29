@@ -4,8 +4,8 @@ import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import NavBar from './components/navbar.js';
 import FoodForm from './components/foodForm.js'
-//import HospitalBill from "./components/hospitalbill.js";
-import HospitalBill from './components/billFontEnd'
+// import HospitalBill from "./components/hospitalbill.js";
+
 import BillForm from "./components/hosform.js";
 import IntersetForm from "./components/intresetform.js";
 import Login from "./components/login.js";
@@ -14,6 +14,7 @@ import Signup from "./components/signup.js";
 import Profile from "./components/profile.js"
 //test
 
+import HospitalBill from './components/hospitalbill'
 
 function App(){
   return (

@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 root: {
 alignText: "center",
 justifyContent:"center",
-maxWidth: 400,
+minWidth: 15000,
 },
 media: {
 height: 0,
@@ -84,7 +84,7 @@ function MakePost(props){
         justify="center"
         style={{ minHeight: '100vh' }}
         >
-        <Grid item xs={3}>
+        <Grid item xs={6}>
           {post.map(item => (
         <Card>
         <Card className={classes.root} >

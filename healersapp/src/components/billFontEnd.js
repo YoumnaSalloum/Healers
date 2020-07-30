@@ -74,6 +74,7 @@ function MakePost(props){
             </Typography>
             <Button  color="inherit" to="/foodform" component={Link}>create Food Post</Button>
             <Button color="inherit" to="/createpost" component={Link}>create hospital bill Post</Button>
+            <Button color="inherit" to="/profile" component={Link} >Profile</Button>
             <Button color="inherit" to="/" component={Link} >HomePage</Button>
             <Button >Logout</Button>
           </Toolbar>

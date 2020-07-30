@@ -33,8 +33,11 @@ import axios from "axios";
 // import pressure from "./pressure";
 // import Colon from './colon';
 
+
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
+  
 
   return (
     <div
@@ -89,15 +92,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// export default function RecipeReviewCard() {
-//   const classes = useStyles();
-//   const [expanded, setExpanded] = React.useState(false);
-
-//   const handleExpandClick = () => {
-//     setExpanded(!expanded);
-//   };
-
-
 //styles for tabs 
 const useStyless = makeStyles((theme) => ({
   root: {
@@ -117,6 +111,7 @@ export default function SimpleTabs() {
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+    
   };
 
   const classes = useStyles();
@@ -125,7 +120,19 @@ export default function SimpleTabs() {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-
+  const [food, setfood] = useState([]);
+  useEffect(() => {
+    const email = localStorage.getItem("id")
+    const myData = {email:email}
+  axios
+  
+  .post("http://localhost:8000/mypost",myData)
+  
+  .then(response => {
+    console.log(response.data.FoodCategories)
+    setfood(response.data.FoodCategories)
+    } )}
+   , [])
   return (
     <div >
     <AppBar position="static">
@@ -135,6 +142,7 @@ export default function SimpleTabs() {
         </Typography>
         <Button  color="inherit" to="/foodform" component={Link}>create Food Post</Button>
         <Button color="inherit" to="/createpost" component={Link}>create hospital bill Post</Button>
+        <Button color="inherit" to="/profile" component={Link} >Profile</Button>
         <Button color="inherit" to="/" component={Link} >HomePage</Button>
         <Button >Logout</Button>
       </Toolbar>
@@ -159,64 +167,71 @@ justify="center"
 style={{ minHeight: '100vh' }}
 >
 <Grid item xs={3}>
-
-      <Card className={classes.root}>
-        <CardHeader
-          avatar={
-            <Avatar aria-label="recipe" className={classes.avatar}>
-              
-            </Avatar>
-          }
-          action={
-            <IconButton aria-label="settings">
-              <MoreVertIcon />
-            </IconButton>
-          }
-          title="Diabetes"
-          subheader=""
-        />
-        <CardMedia
-          className={classes.media}
-        //   image="/static/images/cards/paella.jpg"
-        //   title="Paella dish"
-        />
-        <CardContent>
-          <Typography variant="body2" color="textSecondary" component="p">
-          </Typography>
-        </CardContent>
-        <CardActions disableSpacing>
-          <IconButton aria-label="add to favorites">
-            <FavoriteIcon />
-          </IconButton>
-          <IconButton aria-label="share">
-            <ShareIcon />
-          </IconButton>
-          <IconButton
-            className={clsx(classes.expand, {
-              [classes.expandOpen]: expanded,
-            })}
-            onClick={handleExpandClick}
-            aria-expanded={expanded}
-            aria-label="show more"
-          >
-            <ExpandMoreIcon />
-          </IconButton>
-        </CardActions>
-        <Collapse in={expanded} timeout="auto" unmountOnExit>
-          <CardContent>
-            <Typography paragraph>Method:</Typography>
-            <Typography paragraph>
-              
-            </Typography>
-            <Typography paragraph>
-              </Typography>
-            <Typography paragraph>
-              </Typography>
-            <Typography>
-            </Typography>
-          </CardContent>
-        </Collapse>
-      </Card>
+                       {food.map(ele=>(
+                         
+                       <Card>
+                      <Card className={classes.root} >
+                      <CardHeader
+                      avatar={
+                      <Avatar aria-label="recipe" className={classes.avatar}>
+                      </Avatar>
+                      }
+                      action={
+                      <IconButton aria-label="settings">
+                      <MoreVertIcon />
+                      </IconButton>
+                      }
+                      title="Food Prescriptions"
+                      subheader=""
+                      />
+                      <CardMedia
+                      className={classes.media}
+                     
+                       image = {ele.photo}
+                      title="Paella dish"
+                      />
+                      
+                      
+                      <CardContent>
+                      <Typography variant="body2" color="textSecondary" component="p">
+                      Type Of Disease = {ele.Category}
+                      </Typography>
+                      </CardContent>
+                      <CardActions disableSpacing>
+                      <IconButton aria-label="share">
+                      <ShareIcon />
+                      </IconButton>
+                      <IconButton
+                      className={clsx(classes.expand, {
+                      [classes.expandOpen]: expanded,
+                      })}
+                      onClick={handleExpandClick}
+                      aria-expanded={expanded}
+                      aria-label="show more"
+                      >
+                      <ExpandMoreIcon />
+                      </IconButton>
+                      </CardActions>
+                      <Collapse in={expanded} timeout="auto" unmountOnExit>
+                      <CardContent>
+                      <Typography paragraph></Typography>
+                      <Typography paragraph>
+                      </Typography>
+                      <Typography paragraph>
+                      descriptionOfPrescription =
+                      {ele.descriptionOfPrescription }
+                      </Typography>
+                      <Typography paragraph>
+                      UserPhoneNumber = 
+                      {ele.UserPhoneNumber}
+                      </Typography>
+    
+                      </CardContent>
+                      </Collapse>
+                      
+                      </Card>
+                      </Card>
+                       ))}
       </Grid> 
      </Grid>
       </TabPanel>
@@ -230,65 +245,72 @@ justify="center"
 style={{ minHeight: '100vh' }}
 >
 <Grid item xs={3}>
-      <Card className={classes.root}>
-        <CardHeader
-          avatar={
-            <Avatar aria-label="recipe" className={classes.avatar}>
-              
-            </Avatar>
-          }
-          action={
-            <IconButton aria-label="settings">
-              <MoreVertIcon />
-            </IconButton>
-          }
-          title="Pressure"
-          subheader=""
-        />
-        <CardMedia
-          className={classes.media}
-        //   image="/static/images/cards/paella.jpg"
-        //   title="Paella dish"
-        />
-        <CardContent>
-          <Typography variant="body2" color="textSecondary" component="p">
-          </Typography>
-        </CardContent>
-        <CardActions disableSpacing>
-          <IconButton aria-label="add to favorites">
-            <FavoriteIcon />
-          </IconButton>
-          <IconButton aria-label="share">
-            <ShareIcon />
-          </IconButton>
-          <IconButton
-            className={clsx(classes.expand, {
-              [classes.expandOpen]: expanded,
-            })}
-            onClick={handleExpandClick}
-            aria-expanded={expanded}
-            aria-label="show more"
-          >
-            <ExpandMoreIcon />
-          </IconButton>
-        </CardActions>
-        <Collapse in={expanded} timeout="auto" unmountOnExit>
-          <CardContent>
-            <Typography paragraph>
-                
-            </Typography>
-            <Typography paragraph>
-              
-            </Typography>
-            <Typography paragraph>
-              </Typography>
-            <Typography paragraph>
-              </Typography>
-            <Typography>
-            </Typography>
-          </CardContent>
-        </Collapse>
-      </Card>
+
+                       {food.map(ele=>(
+                         
+                       <Card>
+                      <Card className={classes.root} >
+                      <CardHeader
+                      avatar={
+                      <Avatar aria-label="recipe" className={classes.avatar}>
+                      </Avatar>
+                      }
+                      action={
+                      <IconButton aria-label="settings">
+                      <MoreVertIcon />
+                      </IconButton>
+                      }
+                      title="Food Prescriptions"
+                      subheader=""
+                      />
+                      <CardMedia
+                      className={classes.media}
+                     
+                       image = {ele.photo}
+                      title="Paella dish"
+                      />
+                      
+                      
+                      <CardContent>
+                      <Typography variant="body2" color="textSecondary" component="p">
+                      Type Of Disease = {ele.Category}
+                      </Typography>
+                      </CardContent>
+                      <CardActions disableSpacing>
+                      <IconButton aria-label="share">
+                      <ShareIcon />
+                      </IconButton>
+                      <IconButton
+                      className={clsx(classes.expand, {
+                      [classes.expandOpen]: expanded,
+                      })}
+                      onClick={handleExpandClick}
+                      aria-expanded={expanded}
+                      aria-label="show more"
+                      >
+                      <ExpandMoreIcon />
+                      </IconButton>
+                      </CardActions>
+                      <Collapse in={expanded} timeout="auto" unmountOnExit>
+                      <CardContent>
+                      <Typography paragraph></Typography>
+                      <Typography paragraph>
+                      </Typography>
+                      <Typography paragraph>
+                      descriptionOfPrescription =
+                      {ele.descriptionOfPrescription }
+                      </Typography>
+                      <Typography paragraph>
+                      UserPhoneNumber = 
+                      {ele.UserPhoneNumber}
+                      </Typography>
+    
+                      </CardContent>
+                      </Collapse>
+                      
+                      </Card>
+                      </Card>
+                       ))}
       </Grid> 
 </Grid>
       </TabPanel>
@@ -302,66 +324,72 @@ justify="center"
 style={{ minHeight: '100vh' }}
 >
 <Grid item xs={3}>
-      <Card className={classes.root}>
-        <CardHeader
-          avatar={
-            <Avatar aria-label="recipe" className={classes.avatar}>
-              
-            </Avatar>
-          }
-          action={
-            <IconButton aria-label="settings">
-              <MoreVertIcon />
-            </IconButton>
-          }
-          title="Colon"
-          subheader=""
-        />
-        <CardMedia
-          className={classes.media}
-        //   image="/static/images/cards/paella.jpg"
-        //   title="Paella dish"
-        />
-        <CardContent>
-          <Typography variant="body2" color="textSecondary" component="p">
-          </Typography>
-        </CardContent>
-        <CardActions disableSpacing>
-          <IconButton aria-label="add to favorites">
-            <FavoriteIcon />
-          </IconButton>
-          <IconButton aria-label="share">
-            <ShareIcon />
-          </IconButton>
-          <IconButton
-            className={clsx(classes.expand, {
-              [classes.expandOpen]: expanded,
-            })}
-            onClick={handleExpandClick}
-            aria-expanded={expanded}
-            aria-label="show more"
-          >
-            <ExpandMoreIcon />
-          </IconButton>
-        </CardActions>
-        <Collapse in={expanded} timeout="auto" unmountOnExit>
-          <CardContent>
-            <Typography paragraph>
-                
-            </Typography>
-            <Typography paragraph>
-              
-            </Typography>
-            <Typography paragraph>
-              </Typography>
-              
-            <Typography paragraph>
-              </Typography>
-            <Typography>
-            </Typography>
-          </CardContent>
-        </Collapse>
-      </Card>
+
+                       {food.map(ele=>(
+                         
+                       <Card>
+                      <Card className={classes.root} >
+                      <CardHeader
+                      avatar={
+                      <Avatar aria-label="recipe" className={classes.avatar}>
+                      </Avatar>
+                      }
+                      action={
+                      <IconButton aria-label="settings">
+                      <MoreVertIcon />
+                      </IconButton>
+                      }
+                      title="Food Prescriptions"
+                      subheader=""
+                      />
+                      <CardMedia
+                      className={classes.media}
+                     
+                       image = {ele.photo}
+                      title="Paella dish"
+                      />
+                      
+                      
+                      <CardContent>
+                      <Typography variant="body2" color="textSecondary" component="p">
+                      Type Of Disease = {ele.Category}
+                      </Typography>
+                      </CardContent>
+                      <CardActions disableSpacing>
+                      <IconButton aria-label="share">
+                      <ShareIcon />
+                      </IconButton>
+                      <IconButton
+                      className={clsx(classes.expand, {
+                      [classes.expandOpen]: expanded,
+                      })}
+                      onClick={handleExpandClick}
+                      aria-expanded={expanded}
+                      aria-label="show more"
+                      >
+                      <ExpandMoreIcon />
+                      </IconButton>
+                      </CardActions>
+                      <Collapse in={expanded} timeout="auto" unmountOnExit>
+                      <CardContent>
+                      <Typography paragraph></Typography>
+                      <Typography paragraph>
+                      </Typography>
+                      <Typography paragraph>
+                      descriptionOfPrescription =
+                      {ele.descriptionOfPrescription }
+                      </Typography>
+                      <Typography paragraph>
+                      UserPhoneNumber = 
+                      {ele.UserPhoneNumber}
+                      </Typography>
+    
+                      </CardContent>
+                      </Collapse>
+                      
+                      </Card>
+                      </Card>
+                       ))}
       </Grid> 
 </Grid>
       </TabPanel>

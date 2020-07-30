@@ -21,6 +21,8 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Button from '@material-ui/core/Button'
 import $ from 'jquery'
+import Toolbar from '@material-ui/core/Toolbar';
+import AppBar from '@material-ui/core/AppBar';
 //test 
 //import Pic from '../../../server-side/public/uploads/IMAGE-1595262248867.jpg'
 //testing 
@@ -63,6 +65,20 @@ function MakePost(props){
     setExpanded(!expanded);
     };
     return (
+      <div >
+      <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h6" >
+            About Us
+          </Typography>
+          <Button  color="inherit" to="/foodform" component={Link}>create Food Post</Button>
+          <Button color="inherit" to="/createpost" component={Link}>create hospital bill Post</Button>
+          <Button color="inherit" to="/profile" component={Link} >Profile</Button>
+          <Button color="inherit" to="/" component={Link} >HomePage</Button>
+          <Button  color="inherit" to="/" component={Link}>Logout</Button>
+        </Toolbar>
+      </AppBar>
+
         <div id="post">{props.userData.hospitalBill.map((bill)=>(
         <Grid 
         container
@@ -148,6 +164,7 @@ function MakePost(props){
         </Card>
         </Grid> 
         </Grid>))}
+        </div>
         </div>
         );
 }

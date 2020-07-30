@@ -70,7 +70,6 @@ function  Profile (props) {
     
     const [post, setpost] = useState([]);
     const [username,setusername] = useState([]);
-    const [food, setfood] = useState([]);
     useEffect(() => {
       const email = localStorage.getItem("id")
       const myData = {email:email}
@@ -79,11 +78,9 @@ function  Profile (props) {
     .post("http://localhost:8000/mypost",myData)
 
     .then(response => {
-      console.log(response.data.FoodCategories)
 
      setpost(response.data.hospitalBill)
      setusername(response.data.userName)
-     setfood(response.data.FoodCategories)
      } )}
     , [])
     

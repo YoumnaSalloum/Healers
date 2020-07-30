@@ -70,6 +70,7 @@ function  Profile (props) {
     
     const [post, setpost] = useState([]);
     const [username,setusername] = useState([]);
+    const [food, setfood] = useState([]);
     useEffect(() => {
       const email = localStorage.getItem("id")
       const myData = {email:email}
@@ -78,8 +79,11 @@ function  Profile (props) {
     .post("http://localhost:8000/mypost",myData)
 
     .then(response => {
+      console.log(response.data.FoodCategories)
+
      setpost(response.data.hospitalBill)
      setusername(response.data.userName)
+     setfood(response.data.FoodCategories)
      } )}
     , [])
     
@@ -97,7 +101,7 @@ function  Profile (props) {
             <Button  color="inherit" to="/foodform" component={Link}>create Food Post</Button>
             <Button color="inherit" to="/createpost" component={Link}>create hospital bill Post</Button>
             <Button color="inherit" to="/" component={Link} >HomePage</Button>
-            <Button >Logout</Button>
+            <Button  color="inherit" to="/" component={Link}>Logout</Button>
           </Toolbar>
         </AppBar>
         </div>
@@ -143,6 +147,7 @@ function  Profile (props) {
                       style={{ minHeight: '50vh' }}
                       >
                       <Grid item xs={3}>
+                      <div>
                       <button id={index} onClick={handleOnclick}>delete</button>
                       <Card>
                       <Card className={classes.root} >
@@ -224,7 +229,78 @@ function  Profile (props) {
                       
                       </Card>
                       </Card>
-                       
+                      </div>
+                     <div>
+                              {food.map(ele=>(
+
+                       <Card>
+                      <Card className={classes.root} >
+                      <CardHeader
+                      avatar={
+                      <Avatar aria-label="recipe" className={classes.avatar}>
+                      </Avatar>
+                      }
+                      action={
+                      <IconButton aria-label="settings">
+                      <MoreVertIcon />
+                      </IconButton>
+                      }
+                      title="Food Prescriptions"
+                      subheader=""
+                      />
+                      <CardMedia
+                      className={classes.media}
+
+
+                       image = {ele.photo}
+                      title="Paella dish"
+                      />
+
+
+
+
+
+                      <CardContent>
+                      <Typography variant="body2" color="textSecondary" component="p">
+                      Type Of Disease = {ele.Category}
+                      </Typography>
+                      </CardContent>
+                      <CardActions disableSpacing>
+                      <IconButton aria-label="share">
+                      <ShareIcon />
+                      </IconButton>
+                      <IconButton
+                      className={clsx(classes.expand, {
+                      [classes.expandOpen]: expanded,
+                      })}
+                      onClick={handleExpandClick}
+                      aria-expanded={expanded}
+                      aria-label="show more"
+                      >
+                      <ExpandMoreIcon />
+                      </IconButton>
+                      </CardActions>
+                      <Collapse in={expanded} timeout="auto" unmountOnExit>
+                      <CardContent>
+                      <Typography paragraph></Typography>
+                      <Typography paragraph>
+                      </Typography>
+                      <Typography paragraph>
+                      descriptionOfPrescription =
+                      {ele.descriptionOfPrescription }
+                      </Typography>
+                      <Typography paragraph>
+                      UserPhoneNumber = 
+                      {ele.UserPhoneNumber}
+                      </Typography>
+
+                      </CardContent>
+                      </Collapse>
+
+                      </Card>
+                      </Card>
+                       ))}
+                       </div>
                       </Grid> 
                       </Grid>
                      

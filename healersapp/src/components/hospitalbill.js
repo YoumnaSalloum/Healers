@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
+import ShareButton from './shareButton'
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -102,20 +103,24 @@ function MakePost(props){
         </Typography>
         </CardContent>
         <CardActions disableSpacing>
+        <ShareButton/>
+
         <IconButton aria-label="share">
-        <ShareIcon />
+       
 
         </IconButton>
         <IconButton
         className={clsx(classes.expand, {
         [classes.expandOpen]: expanded,
         })}
+        
         onClick={handleExpandClick}
         aria-expanded={expanded}
         aria-label="show more"
         >
         <ExpandMoreIcon />
         </IconButton>
+
         </CardActions>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>

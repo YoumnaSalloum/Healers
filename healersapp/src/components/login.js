@@ -59,7 +59,9 @@ class Login  extends Component {
 var user={id:this.state.id,email:$('#email').val(),password:$('#password').val()}
 
 $.post('http://localhost:8000/login',{myData: user })
-.done(function () { alert(user.userName); })
+.done(function () { alert(user.userName); 
+
+})
 .fail(function (jqxhr, settings, ex) { alert('failed, ' + ex); });
 
   }

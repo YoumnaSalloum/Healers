@@ -78,6 +78,7 @@ function  Profile (props) {
     .post("http://localhost:8000/mypost",myData)
 
     .then(response => {
+
      setpost(response.data.hospitalBill)
      setusername(response.data.userName)
      } )}
@@ -97,7 +98,7 @@ function  Profile (props) {
             <Button  color="inherit" to="/foodform" component={Link}>create Food Post</Button>
             <Button color="inherit" to="/createpost" component={Link}>create hospital bill Post</Button>
             <Button color="inherit" to="/" component={Link} >HomePage</Button>
-            <Button >Logout</Button>
+            <Button  color="inherit" to="/" component={Link}>Logout</Button>
           </Toolbar>
         </AppBar>
         </div>
@@ -143,6 +144,7 @@ function  Profile (props) {
                       style={{ minHeight: '50vh' }}
                       >
                       <Grid item xs={3}>
+                      <div>
                       <button id={index} onClick={handleOnclick}>delete</button>
                       <Card>
                       <Card className={classes.root} >
@@ -224,13 +226,11 @@ function  Profile (props) {
                       
                       </Card>
                       </Card>
-                       
+                       </div>
                       </Grid> 
                       </Grid>
-                     
                       
-                      
-                      
+
                       ))}
            
        

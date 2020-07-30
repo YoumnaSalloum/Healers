@@ -40,17 +40,17 @@ router.post('/createHospitalPost',(req,res) =>{
     })
 })
 
-// the user can see all his posts
-router.post('/mypost',(req,res)=>{
-    HospitalPost.find({id:req.body.myData.id})
-    .populate('postedBy',"_id userName")
-    .then(mypost=>{
-        res.json({mypost})
-    })
-    .catch(err=>{
-        console.log(err)
-    })
-})
+// // the user can see all his posts
+// router.post('/mypost',(req,res)=>{
+//     HospitalPost.find({id:req.body.myData.id})
+//     .populate('postedBy',"_id userName")
+//     .then(mypost=>{
+//         res.json({mypost})
+//     })
+//     .catch(err=>{
+//         console.log(err)
+//     })
+// })
   
   app.listen(port, () => {
     console.log("listening to port 8000");

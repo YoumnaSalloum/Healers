@@ -226,16 +226,43 @@ const storage = multer.diskStorage({
 
   })
 
-  users.post('/mypost',(req,res)=>{
-    User.find({id:req.body.myData.id})
-    .populate('postedBy',"_id userName")
-    .then(mypost=>{
-        res.json({mypost})
+//   users.post('/mypost',(req,res)=>{
+//     User.find({id:req.body.myData.id})
+//     .populate('postedBy',"_id userName")
+//     .then(mypost=>{
+//         res.json({mypost})
+//     })
+//     .catch(err=>{
+//         console.log(err)
+//     })
+// })
+users.post("/load", function (req, res) {
+    console.log(req.body);
+    var imgurl="";
+    upload(req, res, function (err) {
+      //  console.log(req.file)
+      console.log(req.body.Postdata)
+      var foodPost = JSON.parse(req.body.Postdata);
+      imgurl+=req.file.path
+      console.log(foodPost)
+      User.findOneAndUpdate(
+          {id:foodPost.id},
+          { $push: {FoodCategories:{ descriptionOfPrescription:foodPost.descOfPresc,Category:foodPost.category,
+              UserPhoneNumber:foodPost.userNumber,photo:imgurl
+         } } },
+         function (error, success) {
+               if (error) {
+                   console.log(error);
+               } else {
+                   console.log(success);
+               }
+           });
+   /*Now do where ever you want to do*/
+   if (!err) {
+     return res.send(200).end();
+   }
+ });
     })
-    .catch(err=>{
-        console.log(err)
-    })
-})
 
 
 

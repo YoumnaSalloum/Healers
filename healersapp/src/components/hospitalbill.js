@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
+import ShareButton from './shareButton'
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -20,6 +21,8 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Button from '@material-ui/core/Button'
 import $ from 'jquery'
+import Toolbar from '@material-ui/core/Toolbar';
+import AppBar from '@material-ui/core/AppBar';
 //test 
 //import Pic from '../../../server-side/public/uploads/IMAGE-1595262248867.jpg'
 //testing 
@@ -62,6 +65,20 @@ function MakePost(props){
     setExpanded(!expanded);
     };
     return (
+      <div >
+      <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h6" >
+            About Us
+          </Typography>
+          <Button  color="inherit" to="/foodform" component={Link}>create Food Post</Button>
+          <Button color="inherit" to="/createpost" component={Link}>create hospital bill Post</Button>
+          <Button color="inherit" to="/profile" component={Link} >Profile</Button>
+          <Button color="inherit" to="/" component={Link} >HomePage</Button>
+          <Button  color="inherit" to="/" component={Link}>Logout</Button>
+        </Toolbar>
+      </AppBar>
+
         <div id="post">{props.userData.hospitalBill.map((bill)=>(
         <Grid 
         container
@@ -102,20 +119,24 @@ function MakePost(props){
         </Typography>
         </CardContent>
         <CardActions disableSpacing>
+        <ShareButton/>
+
         <IconButton aria-label="share">
-        <ShareIcon />
+       
 
         </IconButton>
         <IconButton
         className={clsx(classes.expand, {
         [classes.expandOpen]: expanded,
         })}
+        
         onClick={handleExpandClick}
         aria-expanded={expanded}
         aria-label="show more"
         >
         <ExpandMoreIcon />
         </IconButton>
+
         </CardActions>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
@@ -143,6 +164,7 @@ function MakePost(props){
         </Card>
         </Grid> 
         </Grid>))}
+        </div>
         </div>
         );
 }

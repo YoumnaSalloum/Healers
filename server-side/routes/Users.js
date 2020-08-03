@@ -44,6 +44,7 @@ users.post('/signUp', (req, res) => {
         password: req.body.myData.password,
         id:req.body.myData.email
     }
+    
     console.log(req.body.myData)
         User.findOne({
             email: req.body.myData.email

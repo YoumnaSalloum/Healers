@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -7,6 +7,8 @@ import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import { useState, useEffect } from 'react';
 import axios from "axios";
+import ShareButton from './shareButton'
+
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -22,6 +24,7 @@ import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import $ from 'jquery'
+import { useHistory } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   root: {
   alignText: "center",
@@ -46,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
   backgroundColor: red[500],
   },
   }));
-
+  
  function handleOnclick(event){
   event.preventDefault();
   console.log(event.target.id)
@@ -60,6 +63,26 @@ const useStyles = makeStyles((theme) => ({
 }
 
 function  Profile (props) {
+  //logout
+  const history = useHistory();
+
+  function logoutUser(event) {
+    event.preventDefault();
+
+    // history.push("/login");
+    //clear
+    window.localStorage.clear();
+    axios.get('http://localhost:8000/logout')
+      .then((res) => {
+        history.push("/");
+
+        console.log("from logout")
+        console.log(res.data)
+      }).catch((error) => {
+        console.log(error)
+      });
+
+  }
   const { clases } = props;
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
@@ -71,6 +94,10 @@ function  Profile (props) {
     const [post, setpost] = useState([]);
     const [username,setusername] = useState([]);
     useEffect(() => {
+   
+
+
+
       const email = localStorage.getItem("id")
       const myData = {email:email}
     axios
@@ -98,7 +125,8 @@ function  Profile (props) {
             <Button  color="inherit" to="/foodform" component={Link}>create Food Post</Button>
             <Button color="inherit" to="/createpost" component={Link}>create hospital bill Post</Button>
             <Button color="inherit" to="/" component={Link} >HomePage</Button>
-            <Button  color="inherit" to="/" component={Link}>Logout</Button>
+              <Button color="inherit" to="/" component={Link} onClick={logoutUser}>Logout</Button>
+            
           </Toolbar>
         </AppBar>
         </div>
@@ -176,8 +204,8 @@ function  Profile (props) {
                       </CardContent>
                       <CardActions disableSpacing>
                       <IconButton aria-label="share">
-                      <ShareIcon />
-                      </IconButton>
+                                    <ShareButton />                  
+                                        </IconButton>
                       <IconButton
                       className={clsx(classes.expand, {
                       [classes.expandOpen]: expanded,

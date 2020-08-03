@@ -7,7 +7,10 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import { useHistory } from "react-router-dom";
 
+
+var axios = require("axios");
 
 
 const images = [
@@ -126,6 +129,25 @@ const useStyles = makeStyles((theme) => ({
 
 function NavBar() {
   const classes = useStyles();
+  //logout
+  const history = useHistory();
+
+  function logoutUser(event) {
+    event.preventDefault();
+
+    // history.push("/login");
+    //clear
+    window.localStorage.clear();
+    axios.get('http://localhost:8000/logout')
+      .then((res) => {
+        history.push("/");
+
+        console.log("from logout")
+        console.log(res.data)
+      }).catch((error) => {
+        console.log(error)
+      });
+  }
   return ( 
     <div className={classes.root}>
       <AppBar position="static">
@@ -139,7 +161,7 @@ function NavBar() {
           <Button color="inherit" to="/createpost" component={Link}>create hospital bill Post</Button>
           <Button  to="/Signup" component={Link}> SignUp </Button>
           <Button  to="/Login" component={Link} >Login</Button>
-          <Button >Logout</Button>
+          <Button onClick={logoutUser}>Logout</Button>
         </Toolbar>
       </AppBar>
 

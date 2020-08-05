@@ -1,5 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
+var port = process.env.PORT || 8000
 var session = require('express-session');
 var multer = require('multer')
 var path = require('path')
@@ -15,7 +16,7 @@ app.use(
 }));
 
 const User = require('../db/mongo');
-let port = 8000
+// let port = 8000
 app.use(bodyParser.json());
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));

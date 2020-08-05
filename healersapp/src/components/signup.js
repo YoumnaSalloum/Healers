@@ -213,7 +213,7 @@ handleChange(field, e){
           color="primary"
           className={this.classes.submit}
           id='signUp'
-          // component={Link} 
+
           to="/login"
           onClick={this.handleSignUp}
         >

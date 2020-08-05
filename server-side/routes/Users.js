@@ -74,6 +74,7 @@ users.post('/login', (req, res) => {
                     password: user.password,
                     email: user.email
                 }
+               
                 obj.id = user._id
                 obj2.email=user.email
                 let token = jwt.sign(payload, process.env.JWT_KEY+"", {

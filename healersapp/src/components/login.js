@@ -11,15 +11,19 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import BillForm from './hosform'
 import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
+// import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { useHistory } from "react-router-dom";
+
 //login page
 import $ from 'jquery'
-import HospitalBill from "./hospitalbill.js";
- 
+var axios = require("axios");
+// import HospitalBill from "./hospitalbill.js";
+// import { useHistory } from "react-router-dom";
+// const history = useHistory();
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -59,10 +63,34 @@ class Login  extends Component {
 var user={id:this.state.id,email:$('#email').val(),password:$('#password').val()}
 
 $.post('http://localhost:8000/login',{myData: user })
-.done(function () { alert(user.userName); })
+.done(function () { alert(user.userName); 
+  
+})
 .fail(function (jqxhr, settings, ex) { alert('failed, ' + ex); });
 
+
+    
   }
+  // //logout
+  // // const history = useHistory();
+
+  //    logoutUser(event) {
+  //      const history = useHistory();
+  // event.preventDefault();
+
+  // // history.push("/login");
+  // //clear
+  // window.localStorage.clear();
+  // axios.get('http://localhost:8000/logout')
+  //   .then((res) => {
+  //     history.push("/");
+
+  //     console.log("from logout")
+  //     console.log(res.data)
+  //   }).catch((error) => {
+  //     console.log(error)
+  //   });
+
   render() { 
     return (
       <div >
@@ -72,7 +100,7 @@ $.post('http://localhost:8000/login',{myData: user })
             About Us
           </Typography>
 
-          <Button color="inherit" to="/" component={Link}>Logout</Button>
+            {/* <Button color="inherit" to="/" component={Link} onClick={this.logoutUser}>Logout</Button> */}
         </Toolbar>
       </AppBar>
      

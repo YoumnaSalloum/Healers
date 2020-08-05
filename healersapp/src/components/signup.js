@@ -13,6 +13,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import $ from 'jquery'
 
+var axios = require("axios");
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -38,6 +39,7 @@ class Signup extends Component {
     super(props)
     this.classes = useStyles.bind(this);
     this.handleSignUp = this.handleSignUp.bind(this)
+   
   }
   handleSignUp(event){
      var user = {userName:$('#firstName').val(),phoneNumber:$('#phoneNumber').val(),email:$('#email').val(),password:$('#password').val()}
@@ -45,7 +47,13 @@ class Signup extends Component {
      { myData: user })
      .done(function () { alert(user.userName); })
      .fail(function (jqxhr, settings, ex) { alert('failed, ' + ex); });
+
+    
+
      }
+  
+
+
   render() {
     return (
       <div >
@@ -55,7 +63,7 @@ class Signup extends Component {
             About Us
           </Typography>
 
-          <Button  color="inherit" >Logout</Button>
+            
         </Toolbar>
       </AppBar>
       <Container component="main" maxWidth="xs">

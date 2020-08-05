@@ -8,6 +8,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import $ from "jquery";
+import { useHistory } from "react-router-dom";
+
 //using media upload part
 var axios = require("axios");
 
@@ -24,6 +26,7 @@ class BillForm extends React.Component {
     this.onChange = this.onChange.bind(this);
     this.handleHospitalBillSchema = this.handleHospitalBillSchema.bind(this);
   }
+ 
   handleHospitalBillSchema() {
 
     var bill = {
@@ -34,6 +37,26 @@ class BillForm extends React.Component {
       descAboutHealthPatient: $("#healthDes").val(),
     
     };
+    //logout
+    const history = useHistory();
+
+    function logoutUser(event) {
+      event.preventDefault();
+
+      // history.push("/login");
+      //clear
+      window.localStorage.clear();
+      axios.get('http://localhost:8000/logout')
+        .then((res) => {
+          history.push("/");
+
+          console.log("from logout")
+          console.log(res.data)
+        }).catch((error) => {
+          console.log(error)
+        });
+
+    }
     // $.post("http://localhost:8000/uploa", { myData: bill })
     //   .done(function () {
     //     alert("Request done!");
@@ -64,6 +87,7 @@ class BillForm extends React.Component {
         "content-type": "multipart/form-data",
       },
     };
+    
     axios
       .post("http://localhost:8000/upload", formData, bill, config)
       .then((response) => {
@@ -91,7 +115,7 @@ class BillForm extends React.Component {
           <Button  color="inherit" to="/foodform" component={Link}>create Food Post</Button>
           <Button color="inherit" to="/profile" component={Link} >Profile</Button>
           <Button color="inherit" to="/" component={Link} >HomePage</Button>
-          <Button >Logout</Button>
+              <Button color="inherit" to="/" component={Link} onClick={this.logoutUser}>Logout</Button>
         </Toolbar>
       </AppBar>
       </div>

@@ -1,4 +1,3 @@
-
 //code for tabs 
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
@@ -29,15 +28,9 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { useState, useEffect } from 'react';
 import axios from "axios";
-// import Diabetes from "./diabetes";
-// import pressure from "./pressure";
-// import Colon from './colon';
-
-
-
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
-  
+
 
   return (
     <div
@@ -61,6 +54,7 @@ TabPanel.propTypes = {
   index: PropTypes.any.isRequired,
   value: PropTypes.any.isRequired,
 };
+
 
 function a11yProps(index) {
   return {
@@ -91,7 +85,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: red[500],
   },
 }));
-
 //styles for tabs 
 const useStyless = makeStyles((theme) => ({
   root: {
@@ -104,19 +97,15 @@ const useStyless = makeStyles((theme) => ({
     alignItems: 'center',
   },
 }));
-
 export default function SimpleTabs() {
   const classes1 = useStyless();
   const [value, setValue] = React.useState(0);
-
   const handleChange = (event, newValue) => {
     setValue(newValue);
     
   };
-
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
-
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
@@ -142,7 +131,6 @@ export default function SimpleTabs() {
         </Typography>
         <Button  color="inherit" to="/foodform" component={Link}>create Food Post</Button>
         <Button color="inherit" to="/createpost" component={Link}>create hospital bill Post</Button>
-        <Button color="inherit" to="/profile" component={Link} >Profile</Button>
         <Button color="inherit" to="/" component={Link} >HomePage</Button>
         <Button >Logout</Button>
       </Toolbar>
@@ -193,6 +181,7 @@ style={{ minHeight: '100vh' }}
                       
                       
                       <CardContent>
+                      <img width='210px' length='200px' src={require(`./../../../../server-side/public/uploads/${ele.photo.slice(15)}`)}/>
                       <Typography variant="body2" color="textSecondary" component="p">
                       Type Of Disease = {ele.Category}
                       </Typography>
@@ -245,7 +234,7 @@ justify="center"
 style={{ minHeight: '100vh' }}
 >
 <Grid item xs={3}>
-
+​
                        {food.map(ele=>(
                          
                        <Card>
@@ -272,6 +261,7 @@ style={{ minHeight: '100vh' }}
                       
                       
                       <CardContent>
+                      <img width='210px' length='200px' src={require(`./../../../../server-side/public/uploads/${ele.photo.slice(15)}`)}/>
                       <Typography variant="body2" color="textSecondary" component="p">
                       Type Of Disease = {ele.Category}
                       </Typography>
@@ -324,7 +314,7 @@ justify="center"
 style={{ minHeight: '100vh' }}
 >
 <Grid item xs={3}>
-
+​
                        {food.map(ele=>(
                          
                        <Card>
@@ -352,6 +342,7 @@ style={{ minHeight: '100vh' }}
                       
                       <CardContent>
                       <Typography variant="body2" color="textSecondary" component="p">
+                      <img width='210px' length='200px' src={require(`./../../../../server-side/public/uploads/${ele.photo.slice(15)}`)}/>
                       Type Of Disease = {ele.Category}
                       </Typography>
                       </CardContent>

@@ -60,7 +60,7 @@ backgroundColor: red[500],
 // userName: "lubna"
 function MakePost(props){
     const { clases } = props;
-    console.log('./../../../server-side/public/uploads/'+props.userData.hospitalBill[0].photo.slice(17))
+  //  console.log('./../../../server-side/public/uploads/'+props.userData.hospitalBill[0].photo.slice(17))
     const plzWork = '../../../server-side'
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);

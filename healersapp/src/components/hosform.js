@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import $ from "jquery";
 import { useHistory } from "react-router-dom";
+import Avatar from '@material-ui/core/Avatar';
 
 //using media upload part
 var axios = require("axios");
@@ -110,7 +111,7 @@ class BillForm extends React.Component {
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" >
-            About Us
+          <Avatar alt="Remy Sharp" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRhYBy7LF91oLpDUDdsIbcpd7aGf4GKzs3jGw&usqp=CAU" />
           </Typography>
           <Button  color="inherit" to="/foodform" component={Link}>create Food Post</Button>
           <Button color="inherit" to="/profile" component={Link} >Profile</Button>

@@ -60,6 +60,8 @@ backgroundColor: red[500],
 // userName: "lubna"
 function MakePost(props){
     const { clases } = props;
+  //  console.log('./../../../server-side/public/uploads/'+props.userData.hospitalBill[0].photo.slice(17))
+    const plzWork = '../../../server-side'
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
     const handleExpandClick = () => {
@@ -94,16 +96,8 @@ function MakePost(props){
         title="Hospital Bill"
         subheader=""
         />
-        <CardMedia
-        className={classes.media}
-        // img or video:
- 
-    image={'../../../server-side/'+ 'public/uploads/IMAGE-1595849935567.jfif'}
-        title="Paella dish"
-    />
        <img width='210px' length='200px' src={require(`../../../server-side/public/uploads/${bill.photo.slice(17)}`)}/>
-      {/* <img src={'../../../server-side/'+bill.photo} /> */}
-      {/* <img src={require('./../../../server-side/public/uploads/IMAGE-1595262248867.jpg')}/> */}
+    
         <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
         Bill amount:{bill.amount}
@@ -186,7 +180,7 @@ return(
     <AppBar position="static">
     <Toolbar>
       <Typography variant="h6" >
-        About Us
+      <Avatar alt="Remy Sharp" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRhYBy7LF91oLpDUDdsIbcpd7aGf4GKzs3jGw&usqp=CAU" />
       </Typography>
       <Button  color="inherit" to="/foodform" component={Link}>create Food Post</Button>
       <Button color="inherit" to="/createpost" component={Link}>create hospital bill Post</Button>

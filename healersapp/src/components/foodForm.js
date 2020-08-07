@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Grid from "@material-ui/core/Grid";
+import Avatar from '@material-ui/core/Avatar';
 import { useState, useEffect } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -103,7 +104,7 @@ render (){
     <AppBar position="static">
       <Toolbar>
         <Typography variant="h6" >
-          About Us
+        <Avatar alt="Remy Sharp" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRhYBy7LF91oLpDUDdsIbcpd7aGf4GKzs3jGw&usqp=CAU" />
         </Typography>
         <Button color="inherit" to="/createpost" component={Link}>create hospital bill Post</Button>
         <Button color="inherit" to="/profile" component={Link} >Profile</Button>

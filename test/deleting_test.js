@@ -6,7 +6,7 @@ mongoose.Promise = global.Promise;
 describe("Deleting posts", function () {
     var user;
   beforeEach(function (done) {
-     user = new User({
+    user = new User({
         userName : "hamada",
         phoneNumber:34567867890,
         email:'hamada@gmail.com',

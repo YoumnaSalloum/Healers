@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-// const mocha = require('mocha');
+const mocha = require('mocha');
 // ES6 Promises
 mongoose.Promise = global.Promise;
 

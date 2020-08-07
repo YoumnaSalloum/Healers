@@ -24,7 +24,10 @@ import $ from 'jquery'
 import Toolbar from '@material-ui/core/Toolbar';
 import AppBar from '@material-ui/core/AppBar';
 //test 
+//       {/**./../../../server-side/public/uploads/${bill.photo.slice(7)} */}
 //import Pic from '../../../server-side/public/uploads/IMAGE-1595262248867.jpg'
+//import Pic from './../../../server-side/public/uploads/IMAGE-1596008224798.png'
+//var Pic = require('./../../../server-side/public/uploads/IMAGE-1596008224798.png')
 //testing 
 const useStyles = makeStyles((theme) => ({
 root: {
@@ -57,8 +60,6 @@ backgroundColor: red[500],
 // userName: "lubna"
 function MakePost(props){
     const { clases } = props;
-    //console.log(props.userData.hospitalBill[0].photo)
-    const plzWork = '../../../server-side'
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
     const handleExpandClick = () => {
@@ -66,9 +67,9 @@ function MakePost(props){
     };
     return (
       <div >
-   
+    
 
-        <div id="post">{props.userData.hospitalBill.map((bill)=>(
+        <div id="post">{props.userData.hospitalBill.map((bill,index)=>(
         <Grid 
         container
         spacing={5}
@@ -96,10 +97,11 @@ function MakePost(props){
         <CardMedia
         className={classes.media}
         // img or video:
+ 
     image={'../../../server-side/'+ 'public/uploads/IMAGE-1595849935567.jfif'}
         title="Paella dish"
     />
-       {/* <img src={Pic}/>*/}
+       <img width='210px' length='200px' src={require(`../../../server-side/public/uploads/${bill.photo.slice(17)}`)}/>
       {/* <img src={'../../../server-side/'+bill.photo} /> */}
       {/* <img src={require('./../../../server-side/public/uploads/IMAGE-1595262248867.jpg')}/> */}
         <CardContent>
@@ -182,17 +184,17 @@ await $.get('http://localhost:8000/mayis')
 return(
     <div>
     <AppBar position="static">
-      <Toolbar>
-        <Typography variant="h6" >
-          About Us
-          </Typography>
-        <Button color="inherit" to="/foodform" component={Link}>create Food Post</Button>
-        <Button color="inherit" to="/createpost" component={Link}>create hospital bill Post</Button>
-        <Button color="inherit" to="/profile" component={Link} >Profile</Button>
-        <Button color="inherit" to="/" component={Link} >HomePage</Button>
-        <Button color="inherit" to="/" component={Link}>Logout</Button>
-      </Toolbar>
-    </AppBar>
+    <Toolbar>
+      <Typography variant="h6" >
+        About Us
+      </Typography>
+      <Button  color="inherit" to="/foodform" component={Link}>create Food Post</Button>
+      <Button color="inherit" to="/createpost" component={Link}>create hospital bill Post</Button>
+      <Button color="inherit" to="/profile" component={Link} >Profile</Button>
+      <Button color="inherit" to="/" component={Link} >HomePage</Button>
+      <Button  color="inherit" to="/" component={Link}>Logout</Button>
+    </Toolbar>
+  </AppBar>
     {bill.map((user,index)=>(<MakePost key={index}  userData={user} />))}
     </div>
 )

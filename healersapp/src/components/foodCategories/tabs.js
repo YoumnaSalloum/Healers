@@ -28,11 +28,9 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { useState, useEffect } from 'react';
 import axios from "axios";
-import { useHistory } from "react-router-dom";
-
-
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
+
 
   return (
     <div
@@ -56,6 +54,7 @@ TabPanel.propTypes = {
   index: PropTypes.any.isRequired,
   value: PropTypes.any.isRequired,
 };
+
 
 function a11yProps(index) {
   return {
@@ -99,25 +98,6 @@ const useStyless = makeStyles((theme) => ({
   },
 }));
 export default function SimpleTabs() {
-  //logout
-  const history = useHistory();
-
-  function logoutUser(event) {
-    event.preventDefault();
-
-    // history.push("/login");
-    //clear
-    window.localStorage.clear();
-    axios.get('http://localhost:8000/logout')
-      .then((res) => {
-        history.push("/");
-
-        console.log("from logout")
-        console.log(res.data)
-      }).catch((error) => {
-        console.log(error)
-      });
-    }
   const classes1 = useStyless();
   const [value, setValue] = React.useState(0);
   const handleChange = (event, newValue) => {
@@ -152,7 +132,7 @@ export default function SimpleTabs() {
         <Button  color="inherit" to="/foodform" component={Link}>create Food Post</Button>
         <Button color="inherit" to="/createpost" component={Link}>create hospital bill Post</Button>
         <Button color="inherit" to="/" component={Link} >HomePage</Button>
-          <Button onClick={logoutUser}  >Logout</Button>
+        <Button >Logout</Button>
       </Toolbar>
     </AppBar>
     
@@ -201,6 +181,7 @@ style={{ minHeight: '100vh' }}
                       
                       
                       <CardContent>
+                      <img width='210px' length='200px' src={require(`./../../../../server-side/public/uploads/${ele.photo.slice(15)}`)}/>
                       <Typography variant="body2" color="textSecondary" component="p">
                       Type Of Disease = {ele.Category}
                       </Typography>
@@ -280,6 +261,7 @@ style={{ minHeight: '100vh' }}
                       
                       
                       <CardContent>
+                      <img width='210px' length='200px' src={require(`./../../../../server-side/public/uploads/${ele.photo.slice(15)}`)}/>
                       <Typography variant="body2" color="textSecondary" component="p">
                       Type Of Disease = {ele.Category}
                       </Typography>
@@ -360,6 +342,7 @@ style={{ minHeight: '100vh' }}
                       
                       <CardContent>
                       <Typography variant="body2" color="textSecondary" component="p">
+                      <img width='210px' length='200px' src={require(`./../../../../server-side/public/uploads/${ele.photo.slice(15)}`)}/>
                       Type Of Disease = {ele.Category}
                       </Typography>
                       </CardContent>
@@ -405,5 +388,3 @@ style={{ minHeight: '100vh' }}
     </div>
   );
 }
-
-

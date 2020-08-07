@@ -13,6 +13,7 @@ import Signup from "./components/signup.js";
  import SimpleTabs from "./components/foodCategories/tabs.js";
 import Profile from "./components/profile.js"
 import Profilee from "./components/profileF.js"
+
 //test
 
 import HospitalBill from './components/hospitalbill'
@@ -34,6 +35,7 @@ function App(){
      <Route path="/profile" component={Profile} />
      <Route path="/profile" component={Profilee} />
      <Route path="/foodForm" component={FoodForm} />
+     
 
      </div>
      </Router>

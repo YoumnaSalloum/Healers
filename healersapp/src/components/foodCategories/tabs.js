@@ -127,7 +127,7 @@ export default function SimpleTabs() {
     <AppBar position="static">
       <Toolbar>
         <Typography variant="h6" >
-          About Us
+        <Avatar alt="Remy Sharp" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRhYBy7LF91oLpDUDdsIbcpd7aGf4GKzs3jGw&usqp=CAU" />
         </Typography>
         <Button  color="inherit" to="/foodform" component={Link}>create Food Post</Button>
         <Button color="inherit" to="/createpost" component={Link}>create hospital bill Post</Button>
@@ -172,16 +172,9 @@ style={{ minHeight: '100vh' }}
                       title="Food Prescriptions"
                       subheader=""
                       />
-                      <CardMedia
-                      className={classes.media}
-                     
-                       image = {ele.photo}
-                      title="Paella dish"
-                      />
-                      
-                      
+                     <img width='210px' length='200px' src={require(`./../../../../server-side/public/uploads/${ele.photo.slice(15)}`)}/>
+
                       <CardContent>
-                      <img width='210px' length='200px' src={require(`./../../../../server-side/public/uploads/${ele.photo.slice(15)}`)}/>
                       <Typography variant="body2" color="textSecondary" component="p">
                       Type Of Disease = {ele.Category}
                       </Typography>
@@ -252,16 +245,9 @@ style={{ minHeight: '100vh' }}
                       title="Food Prescriptions"
                       subheader=""
                       />
-                      <CardMedia
-                      className={classes.media}
-                     
-                       image = {ele.photo}
-                      title="Paella dish"
-                      />
-                      
-                      
+                             <img width='210px' length='200px' src={require(`./../../../../server-side/public/uploads/${ele.photo.slice(15)}`)}/>
                       <CardContent>
-                      <img width='210px' length='200px' src={require(`./../../../../server-side/public/uploads/${ele.photo.slice(15)}`)}/>
+             
                       <Typography variant="body2" color="textSecondary" component="p">
                       Type Of Disease = {ele.Category}
                       </Typography>
@@ -332,17 +318,10 @@ style={{ minHeight: '100vh' }}
                       title="Food Prescriptions"
                       subheader=""
                       />
-                      <CardMedia
-                      className={classes.media}
-                     
-                       image = {ele.photo}
-                      title="Paella dish"
-                      />
-                      
-                      
+                            <img width='210px' length='200px' src={require(`./../../../../server-side/public/uploads/${ele.photo.slice(15)}`)}/>
                       <CardContent>
                       <Typography variant="body2" color="textSecondary" component="p">
-                      <img width='210px' length='200px' src={require(`./../../../../server-side/public/uploads/${ele.photo.slice(15)}`)}/>
+                
                       Type Of Disease = {ele.Category}
                       </Typography>
                       </CardContent>

@@ -100,7 +100,7 @@ function MakePost(props) {
                       title="Hospital Bill"
                       subheader=""
                     />
-                    <CardMedia
+                    {/* <CardMedia
                       className={classes.media}
                       // img or video:
 
@@ -109,7 +109,7 @@ function MakePost(props) {
                         "public/uploads/IMAGE-1595849935567.jfif"
                       }
                       title="Paella dish"
-                    />
+                    /> */}
                     <img
                       width="210px"
                       length="200px"

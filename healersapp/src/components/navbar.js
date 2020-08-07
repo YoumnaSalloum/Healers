@@ -8,10 +8,23 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { useHistory } from "react-router-dom";
-
+import Modal from '@material-ui/core/Modal';
 
 var axios = require("axios");
 
+function rand() {
+  return Math.round(Math.random() * 20) - 10;
+}
+
+function getModalStyle() {
+  const top = 50 + rand();
+  const left = 50 + rand();
+  return {
+      top: `${top}%`,
+      left: `${left}%`,
+      transform: `translate(-${top}%, -${left}%)`,
+  };
+}
 
 const images = [
   {
@@ -34,6 +47,19 @@ const images = [
 
 
 const useStyles = makeStyles((theme) => ({
+  modal: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+},
+paper: {
+    position: 'absolute',
+    width: 900,
+    height: 700,
+    backgroundColor: theme.palette.background.paper,
+    boxShadow: theme.shadows[5],
+    // padding: theme.spacing(2, 4, 3),
+},
   rot: {
    display: 'flex',
     flexWrap: 'wrap',
@@ -129,6 +155,17 @@ const useStyles = makeStyles((theme) => ({
 
 function NavBar() {
   const classes = useStyles();
+  const [modalStyle] = React.useState(getModalStyle);
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+      setOpen(true);
+  };
+
+  const handleClose = () => {
+      setOpen(false);
+  };
+  // const classes = useStyles();
   //logout
   const history = useHistory();
 
@@ -152,9 +189,20 @@ function NavBar() {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h6" className={classes.title}>
+          <Typography color="inherit" variant="h6" onClick={handleOpen} className={classes.title}>
             About Us
           </Typography>
+          <Modal
+                aria-labelledby="simple-modal-title"
+                aria-describedby="simple-modal-description"
+                open={open}
+                onClose={handleClose}
+            >
+                <div style={modalStyle} className={classes.paper}>
+                <iframe width="900" height="700" src="https://www.youtube.com/embed/tioAC7slp20" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </Modal>
+     
           
           <Button color="inherit" to="/profile" component={Link} >Profile</Button>
           <Button  color="inherit" to="/foodform" component={Link}>create Food Post</Button>
@@ -237,6 +285,7 @@ function NavBar() {
       
       </div>
     </div>
+    
   );
 }
 

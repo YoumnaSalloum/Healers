@@ -118,7 +118,7 @@ export default function SimpleTabs() {
   .post("http://localhost:8000/mypost",myData)
   
   .then(response => {
-    console.log(response.data.FoodCategories)
+  
     setfood(response.data.FoodCategories)
     } )}
    , [])

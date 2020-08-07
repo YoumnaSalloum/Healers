@@ -4,16 +4,16 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 //describe tests
 describe("Deleting posts", function () {
-    var char;
+    var user;
   beforeEach(function (done) {
-     char = new User({
+     user = new User({
         userName : "hamada",
         phoneNumber:34567867890,
         email:'hamada@gmail.com',
         password : '1234',
         id:'hamada@gmail.com'
     });
-    char.save().then(function () {
+    user.save().then(function () {
       done();
     });
   });

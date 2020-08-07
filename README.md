@@ -52,14 +52,14 @@ npm install run this command inside back-end directory to start the server nodem
 
 
 ## CONTRIBUTING
-- 1-Create new orgnization by scrum master.
-- 2-Create new repo in the org.
-- 3-Fork the repo by the team members.
-- 4-Make changes in code (add features, fix issues, refactor block of code).
-- 5-Each member expext the scrum master have to make a pull request.
-- 6-Each pull request will be reviewed by scrum master to make sure the code is clean, clear and working correctly.
-- 7- Scrum master will ask for any changes if it is need then approve the pull request and merge it to base.
-- 8-If any changes asked by Scrum master the other team member has to fix the issues then make another pull request.
-- 9-Scrum master have to solve the conflicts before merging.
-- 10-When Scrum master made new changes to code he will commit the changes without pull request.
+ 1. Create new orgnization by scrum master.
+ 2. Create new repo in the org.
+ 3. Fork the repo by the team members.
+ 4. Make changes in code (add features, fix issues, refactor block of code).
+ 5. Each member expext the scrum master have to make a pull request.
+ 6. Each pull request will be reviewed by scrum master to make sure the code is clean, clear and working correctly.
+ 7. Scrum master will ask for any changes if it is need then approve the pull request and merge it to base.
+ 8. If any changes asked by Scrum master the other team member has to fix the issues then make another pull request.
+ 9. Scrum master have to solve the conflicts before merging.
+ 10. When Scrum master made new changes to code he will commit the changes without pull request.
 

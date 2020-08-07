@@ -44,8 +44,11 @@ See [Demo](https://www.youtube.com/watch?v=tioAC7slp20) for Healers App.
 npm install run this command inside back-end directory to start the server nodemon server.js run this command inside the root directory to start the react npm start
 
 ## Tasks 
-### Fornt-end => building components with material ui => Amneh & Mayis / Back-end => building server.js and connecting database to server => Youmna & Lubna /
-### building schema => All the team togther /mocha testing => All team togther /Deployment => All the team togther 
+Fornt-end: building components with material ui => Amneh & Mayis 
+Back-end : building server.js and connecting database to server => Youmna & Lubna /
+building schema : All team members 
+mocha testing   : All team members 
+Deployment      : All team members  
 
 
 ## CONTRIBUTING

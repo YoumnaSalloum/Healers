@@ -68,7 +68,8 @@ const FoodCategoriesSchema = new Schema({
     photo:{
         type:String,
         default:"no photo"
-    },
+    }
+    ,
     postedBy:{
         type:ObjectId,
         ref:"users"

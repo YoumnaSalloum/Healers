@@ -14,7 +14,9 @@ describe('Saving posts', function () {
             phoneNumber:34567867890,
             email:'hamadeh@gmail.com',
             password : '1234',
-            id:'hamadeh@gmail.com'
+            id:'hamadeh@gmail.com',
+            hospitalBill:[],
+            FoodCategories:[]
         });
 
         user.save().then(function () {

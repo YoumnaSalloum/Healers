@@ -28,6 +28,9 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { useState, useEffect } from 'react';
 import axios from "axios";
+import { useHistory } from "react-router-dom";
+
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -96,6 +99,25 @@ const useStyless = makeStyles((theme) => ({
   },
 }));
 export default function SimpleTabs() {
+  //logout
+  const history = useHistory();
+
+  function logoutUser(event) {
+    event.preventDefault();
+
+    // history.push("/login");
+    //clear
+    window.localStorage.clear();
+    axios.get('http://localhost:8000/logout')
+      .then((res) => {
+        history.push("/");
+
+        console.log("from logout")
+        console.log(res.data)
+      }).catch((error) => {
+        console.log(error)
+      });
+    }
   const classes1 = useStyless();
   const [value, setValue] = React.useState(0);
   const handleChange = (event, newValue) => {
@@ -130,7 +152,7 @@ export default function SimpleTabs() {
         <Button  color="inherit" to="/foodform" component={Link}>create Food Post</Button>
         <Button color="inherit" to="/createpost" component={Link}>create hospital bill Post</Button>
         <Button color="inherit" to="/" component={Link} >HomePage</Button>
-        <Button >Logout</Button>
+          <Button onClick={logoutUser}  >Logout</Button>
       </Toolbar>
     </AppBar>
     

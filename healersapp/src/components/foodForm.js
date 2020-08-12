@@ -9,7 +9,10 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import $ from 'jquery'
+import { useHistory } from "react-router-dom";
+
 var axios = require("axios");
+
 const useStyles = makeStyles((theme) => ({
   root: {
     '& > *': {
@@ -37,6 +40,27 @@ export default class FoodForm  extends React.Component {
   //    Category:$('#Category').val(),
   //    photo:$('#photo').val()}
   //    }
+  //logout
+
+
+  //       logoutUser(event) {
+  //         const history = useHistory();
+  // event.preventDefault();
+
+  // // history.push("/login");
+  // //clear
+  // window.localStorage.clear();
+  // axios.get('http://localhost:8000/logout')
+  //   .then((res) => {
+  //     history.push("/");
+
+  //     console.log("from logout")
+  //     console.log(res.data)
+  //   }).catch((error) => {
+  //     console.log(error)
+  //   });
+
+// }
      onFormSubmit(e) {
      var post = {
       category: $("#category").val(),
@@ -64,10 +88,14 @@ export default class FoodForm  extends React.Component {
       .catch((error) => {
         alert("error");
       });
+      
+
   }
   onChange(e) {
     this.setState({ file: e.target.files[0] });
   }
+  
+  
 render (){
   return (
     <div>
@@ -80,7 +108,7 @@ render (){
         <Button color="inherit" to="/createpost" component={Link}>create hospital bill Post</Button>
         <Button color="inherit" to="/profile" component={Link} >Profile</Button>
         <Button color="inherit" to="/" component={Link} >HomePage</Button>
-        <Button  color="inherit" to="/" component={Link}>Logout</Button>
+            {/* <Button color="inherit" to="/" component={Link} onClick={this.logoutUser}>Logout</Button> */}
       </Toolbar>
     </AppBar>
     </div>

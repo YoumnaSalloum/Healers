@@ -90,7 +90,7 @@ function  Profilee (props) {
                               style={{ minHeight: '50vh' }}
                               >
                               <Grid item xs={3}>
-                         
+                 
                        <Card>
                       <Card className={classes.root} >
                       <CardHeader
@@ -106,18 +106,12 @@ function  Profilee (props) {
                       title="Food Prescriptions"
                       subheader=""
                       />
-                      <CardMedia
-                      className={classes.media}
-                     
-                       image = {ele.photo}
-                      title="Paella dish"
-                      />
-                      
-                      
+                  <img width='210px' length='200px' src={require(`./../../../server-side/public/uploads/${ele.photo.slice(15)}`)}/>
                       <CardContent>
                       <Typography variant="body2" color="textSecondary" component="p">
                       Type Of Disease = {ele.Category}
                       </Typography>
+                      
                       </CardContent>
                       <CardActions disableSpacing>
                       <IconButton aria-label="share">

@@ -70,7 +70,7 @@ function MakePost(props){
         <AppBar position="static">
           <Toolbar>
             <Typography variant="h6" >
-              About Us
+            <Avatar alt="Remy Sharp" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRhYBy7LF91oLpDUDdsIbcpd7aGf4GKzs3jGw&usqp=CAU" />
             </Typography>
             <Button  color="inherit" to="/foodform" component={Link}>create Food Post</Button>
             <Button color="inherit" to="/createpost" component={Link}>create hospital bill Post</Button>

@@ -1,7 +1,9 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const {ObjectId} = mongoose.Schema.Types
-mongoose.connect("mongodb://localhost/collection");
+require("dotenv").config(); // to read .env file
+const mongoURI = process.env.ATLAS_URI;
+mongoose.connect("mongodb+srv://youmna:123@mongodbc01-hu68n.mongodb.net/mongodbc01?retryWrites=true&w=majority", { useUnifiedTopology: true });
 
 const db = mongoose.connection;
 
@@ -66,7 +68,8 @@ const FoodCategoriesSchema = new Schema({
     photo:{
         type:String,
         default:"no photo"
-    },
+    }
+    ,
     postedBy:{
         type:ObjectId,
         ref:"users"

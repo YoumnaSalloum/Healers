@@ -1,65 +1,96 @@
-# Healers
-Welcome to Healers.
-healers application contains two sections:
-first section : hospital bill
-When there is a patient and he has to pay a hospital bill, but he doesn't have enough money for that ,he will enter healers  application and create a post for him containing:costs ,a photo of this bill, his phone number, and a phone number to communicate with the hospital, in other words, it will contain enough information to confirm the validity of this bill. After that, when users enter the application, they will browse patients data from more than one hospital and decide whether they want to contribute to paying one of these bills. 
-second section : Food prescription 
-in this section, dietitians or anyone who knows healthy food recipes for example doesn't contain  spicy, hot or fried ingredients , that will suit  patients  with diabetes or hypertension or colon 
-they will be able to create a post contains the recipe and phone number 
-to answer any questions regarding these recipes
+# 💚 Healers
 
-# Getting a Copy of the Repo
-If you haven't already, fork the repository on GitHub and clone your newly created repo down to your computer.
+Healers is a web application that connects donors with patients and helps patients keep a healthy lifestyle. It was built by a team of four during the immersive full-stack program at [ReBoot Kamp (RBK)](https://rbk.org/).
 
+## 🎬 Demo
 
-# Team 
+[![Watch the Healers demo on YouTube](https://img.youtube.com/vi/tioAC7slp20/hqdefault.jpg)](https://www.youtube.com/watch?v=tioAC7slp20)
 
-- __Product Owner__: Amneh Hammami
-- __Scrum Master__: Youmna Salloum
-- __Development Team Members__: Mayis Mazin, Lubna HajHussein
+▶️ [Watch the demo on YouTube](https://www.youtube.com/watch?v=tioAC7slp20)
 
-### Demo
+## ✨ Features
 
-See [Demo](https://www.youtube.com/watch?v=tioAC7slp20) for Healers App.
+### 🏥 Hospital bills
+A patient who can't afford a hospital bill creates a post with:
+- the cost and a photo of the bill,
+- their phone number,
+- a phone number for the hospital, so donors can confirm the bill is real.
 
+Users browse bills from different hospitals and choose which ones to help pay.
 
-# Table of Contents
+### 🥗 Food prescriptions
+Dietitians, or anyone who knows healthy recipes, post meals suited to patients with **diabetes**, **high blood pressure** or **colon conditions** (for example, no spicy, hot or fried ingredients). Each post includes a phone number for questions. Recipes are grouped by condition in tabs.
 
+### 👤 Accounts
+- Sign up, log in and log out.
+- A profile page with your own posts.
+- Share buttons for posts.
 
-1. [Requirements](#requirements)
-1. [Development](#development)
-    1. [Installing Dependencies](#installing-dependencies)
-    1. [Tasks](#tasks)
-1. [Team](#team)
-1. [Contributing](#contributing)
+## 🛠️ Built With
 
-## Requirements
+| Layer | Technology |
+| --- | --- |
+| Frontend | React 16, Material UI, React Router, Axios |
+| Backend | Node.js, Express, Multer (image uploads), JSON Web Tokens, Nodemailer |
+| Database | MongoDB with Mongoose |
+| Testing | Mocha |
+| Deployment | Heroku |
 
-- Node v14.4.0 or more
-- mongodb
+## 🗂️ Project Structure
 
-## Development
+```
+Healers/
+├── healersapp/          # React frontend
+│   └── src/components/  # login, signup, profile, hospital bill, food posts, navbar...
+├── server-side/         # Express server (port 8000) and routes
+│   └── routes/          # hospost.js, foodpost.js, users.js
+├── db/mongo.js          # Mongoose models and connection
+└── test/                # Mocha tests: saving, finding, updating, deleting
+```
 
-### Installing Dependencies
-npm install run this command inside back-end directory to start the server nodemon server.js run this command inside the root directory to start the react npm start
+## 🚀 Getting Started
 
-## Tasks 
-- __Fornt-end__: building components with material ui : Amneh & Mayis
-- __Back-end__: building server.js and connecting database to server : Youmna & Lubna 
-- __building schema__: All team members 
-- __mocha testing__: All team members 
-- __Deployment__: All team members  
+**Requirements:** Node.js v14.4.0 or newer and MongoDB.
 
+```bash
+git clone https://github.com/YoumnaSalloum/Healers.git
+cd Healers
+npm install
+```
 
-## CONTRIBUTING
- 1. Create new orgnization by scrum master.
- 2. Create new repo in the org.
- 3. Fork the repo by the team members.
- 4. Make changes in code (add features, fix issues, refactor block of code).
- 5. Each member expext the scrum master have to make a pull request.
- 6. Each pull request will be reviewed by scrum master to make sure the code is clean, clear and working correctly.
- 7. Scrum master will ask for any changes if it is need then approve the pull request and merge it to base.
- 8. If any changes asked by Scrum master the other team member has to fix the issues then make another pull request.
- 9. Scrum master have to solve the conflicts before merging.
- 10. When Scrum master made new changes to code he will commit the changes without pull request.
+1. Set your MongoDB connection string in `db/mongo.js`.
+2. Start the server:
+   ```bash
+   cd server-side
+   nodemon server.js          # runs on http://localhost:8000
+   ```
+3. In a second terminal, start the React app:
+   ```bash
+   cd healersapp
+   npm install
+   npm start                  # runs on http://localhost:3000
+   ```
+4. Run the tests from the root folder:
+   ```bash
+   npm test
+   ```
 
+## 👥 Team
+
+| Role | Name |
+| --- | --- |
+| Product Owner | Amneh Hammami |
+| Scrum Master | Youmna Salloum |
+| Developers | Mayis Mazin, Lubna HajHussein |
+
+### Who did what
+- **Frontend** (components with Material UI): Amneh and Mayis
+- **Backend** (Express server and database connection): Youmna and Lubna
+- **Schema design, Mocha tests and deployment:** the whole team
+
+## 🔀 Workflow
+
+1. The scrum master created the organization and the repo.
+2. Each team member forked the repo and worked on features, fixes and refactors.
+3. Every change went through a pull request reviewed by the scrum master for clean, working code.
+4. The scrum master requested changes when needed, resolved conflicts, and merged approved pull requests.
